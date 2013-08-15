@@ -12,17 +12,23 @@
 	</script>
 	<link rel="stylesheet" type="text/css" href="./assets/css/tcal.css" />
 	<link rel="stylesheet" type="text/css" href="./assets/css/tcal_two.css" />
-	<script type="text/javascript" src="./assets/js/tcal.js"></script>
-	<script type="text/javascript" src="./assets/js/tcal_two.js"></script>
+
 
 </head>
 <body class="<?php echo pgname(); ?>">
 	<section class="container">
-		<section class="layout">
+	
+		
 			<section class="header">
-				<a href="./">Pairness.Com</a>
+
+    <div class="tps"></div>
+
+<!--
+							<a href="./">Pairness.Com</a>
 				<div class="tp-nav" style="text-align:right">
 				<?php if(check_login()) {echo '<a id="go-to-home" href="home.php">Home</a> | <a id="logout-home" href="logout.php?">Logout</a>';} 
 				else {echo '<a id="register-mini" href="#register">Register</a> |<a id="login-mini" href="#login">Login</a>';} ?>
 				</div>
-		</section>
+				
+				-->
+		</section><section class="layout">
