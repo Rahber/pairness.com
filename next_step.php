@@ -9,7 +9,6 @@
 *********************************************/
 include('./includes/functions.php');
 include('./assets/template/header.coz');
-include('./assets/template/candidate.coz');
 include('./assets/template/next_step.coz');
 include('./assets/template/footer.coz');
 
