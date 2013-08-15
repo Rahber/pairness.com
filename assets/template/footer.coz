@@ -8,7 +8,10 @@
 <script type='text/javascript' src='./assets/js/jquery.js'></script>
 <script type='text/javascript' src='./assets/js/boot.js'></script>
 <script type='text/javascript' src='./assets/js/notifications.js'></script>
+<script type="text/javascript" src="./assets/js/tcal.js"></script>
+<script type="text/javascript" src="./assets/js/tcal_two.js"></script>
 <script type='text/javascript' src='./assets/js/pairness.js'></script>
+
 
 </body>
 </html>

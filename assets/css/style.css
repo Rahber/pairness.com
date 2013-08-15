@@ -1,7 +1,63 @@
-body{
-	background:#ec7502 !important;
-	color:#fff !important;
+/* CSS Document */
+
+html, body {
+margin:0px;
+padding:0px;
+background-image:url(./img/bg.png);
 }
+@font-face {
+	font-family: Book Antiqua;
+	src: url('./img/ANTQUAB.ttf');
+}
+
+@font-face {
+	font-family: Candara;
+	font-weight: bold;
+	src: url('./img/Candara.ttf');
+}
+
+.blacktext {
+color:#000000; font-size:10px; font-family:Arial, Helvetica, sans-serif;
+}
+.whitetext {
+color:#ffffff; font-size:13px; font-family:Arial, Helvetica, sans-serif;
+}
+.footertxt {
+color:#fda03b; font-size:12px; font-family:Arial, Helvetica, sans-serif;
+text-shadow:0 0 3px #000000;
+}
+.footerlinktxt {
+color:#fde679; font-size:12px; font-family:Candara;
+}
+
+.inputForm
+{
+-moz-border-radius:5px; /* Firefox */
+-webkit-border-radius: 5px; /* Safari, Chrome */
+-khtml-border-radius: 5px; /* KHTML */
+border-radius: 5px; /* CSS3 */
+height:28px;
+border-color:#000000;
+width:290px;
+background-image:url(./img/img_textbox_bg.png);
+padding-left:5px;
+color:#8a8787;
+font-family:Book Antiqua;
+font-size:14px;
+}
+.flink:link {
+color:#fde679; font-size:15px; font-family:Candara; font-style:italic;
+}
+.flink:visited {
+color:#fde679; font-size:15px; font-family:Candara; font-style:italic;
+}
+.flink:hover {
+color:#fff; font-size:15px; font-family:Candara; font-style:italic;
+}
+.flink:active {
+color:#fde679; font-size:15px; font-family:Candara; font-style:italic;
+} 
+
 
 .loader{
 	left:50%;
@@ -21,16 +77,12 @@ body{
 
 .layout{
 	padding:0px 20px;
-	background:url(./img/main_background.png);
 	margin: 0 auto;
 	background-size: 100%;
 }
 
 .index .layout{
-	height:640px;
-	margin:50px auto;
-	width: 800px;
-	border-radius: 200px;
+
 }
 
 .le,.re,.me{
@@ -56,6 +108,12 @@ body{
 #logo {
 	margin-left: 160px;
 	margin-top: 100px;
+}
+
+.tps{
+	width:100%;
+	height:8px;
+	background:black;
 }
 
 #heart{
