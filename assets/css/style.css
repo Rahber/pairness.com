@@ -89,10 +89,6 @@ color:#fde679; font-size:15px; font-family:Candara; font-style:italic;
 	float:left
 }
 
-.login a {
-	color:black;
-}
-
 .le{
 	width:100px;
 	height:800px;
@@ -124,14 +120,29 @@ input[type="text"][readonly] {
    background: grey;
 }
 
-.login {
-	padding: 10px;
-	background: pink;
+.not-wrapper{
 	left: 40%;
 	top: 50%;
-	border-radius: 20px;
-	text-align: center;
 	display:none;
+	padding: 10px 60px;
+	background: #820503;
+	border-radius: 20px;
+	border:10px solid rgba(0,0,0,0.25);	
+	color:white;
+	text-align: center;
+	min-width:200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+
+.not a {
+	color:white;
 }
 
 .abs {
