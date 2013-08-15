@@ -12,10 +12,10 @@ $email = request_var('email','');
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome To Pariness</title>
 
-<link rel="stylesheet" type="text/css" href="../assets/css/tcal.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/tcal_two.css" />
-<script type="text/javascript" src="../assets/js/tcal.js"></script>
-<script type="text/javascript" src="../assets/js/tcal_two.js"></script>
+<link rel="stylesheet" type="text/css" href="../tcal.css" />
+<link rel="stylesheet" type="text/css" href="../tcal_two.css" />
+<script type="text/javascript" src="../tcal.js"></script>
+<script type="text/javascript" src="../tcal_two.js"></script>
 </head>
 <body>
 <?php
