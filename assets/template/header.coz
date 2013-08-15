@@ -10,6 +10,11 @@
 	<script>   var ret = "<?php echo  $ret ;  ?>";
 			var baseurl=  "<?php echo $sitepath;  ?>"
 	</script>
+	<link rel="stylesheet" type="text/css" href="./assets/css/tcal.css" />
+	<link rel="stylesheet" type="text/css" href="./assets/css/tcal_two.css" />
+	<script type="text/javascript" src="./assets/js/tcal.js"></script>
+	<script type="text/javascript" src="./assets/js/tcal_two.js"></script>
+
 </head>
 <body class="<?php echo pgname(); ?>">
 	<section class="container">
