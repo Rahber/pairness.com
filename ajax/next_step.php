@@ -13,7 +13,9 @@ $email = request_var('email','');
 <title>Welcome To Pariness</title>
 
 <link rel="stylesheet" type="text/css" href="../assets/css/tcal.css" />
-	<script type="text/javascript" src="../assets/js/tcal.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/css/tcal_two.css" />
+<script type="text/javascript" src="../assets/js/tcal.js"></script>
+<script type="text/javascript" src="../assets/js/tcal_two.js"></script>
 </head>
 <body>
 <?php
@@ -275,7 +277,7 @@ else
 	 
 	?>	
 	<form action="" method="post" name="nextstep" id="nextstep" enctype="multipart/form-data">
-	<table width="500" border="0" cellspacing="0" cellpadding="0">
+	<table width="600" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>ID:</td>
     <td><input type="text" name="id" id="id" value="<?php echo $id ?>" /></td>
@@ -350,7 +352,7 @@ else
   </tr>
   <tr>
     <td>Date of Birth:</td>
-    <td><input type="text" name="dateofbirth" id="dateofbirth" value="<?php echo $familydateofbirth ?>" /></td>
+    <td><input type="text" name="dateofbirth" id="dateofbirth" class="tcal_two" value="<?php echo $familydateofbirth ?>" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -3194,7 +3196,7 @@ else
 ?>
 <br><br>
 <form action="" method="post" name="nextstep" id="nextstep" enctype="multipart/form-data">
-	<table width="500" border="0" cellspacing="0" cellpadding="0">
+	<table width="600" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>ID:</td>
     <td><input type="text" name="id" id="id" value="<?php echo $id ?>" /></td>
@@ -3269,7 +3271,7 @@ else
   </tr>
   <tr>
     <td>Date of Birth:</td>
-    <td><input type="text" name="dateofbirth" id="dateofbirth" value="<?php echo $familydateofbirth ?>" /></td>
+    <td><input type="text" name="dateofbirth" id="dateofbirth" class="tcal_two" value="<?php echo $familydateofbirth ?>" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
