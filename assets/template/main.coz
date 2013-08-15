@@ -2,6 +2,7 @@
 
 auth_check();
 
+//test
 ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -34,8 +35,9 @@ auth_check();
         <td width="14"><img src="./assets/css/img/searchbar_01.png" width="14" height="80" /></td>
         <td bgcolor="#000000"><table width="722" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><input type="text" name="op1" placeholder="Caste or Religion or Mother Tongue" value="" class="inputForm"></td>
+                   <td><input type="text" name="op1" placeholder="Caste or Religion or Mother Tongue" value="" class="inputForm"></td>
             <td><input type="text" name="op2" id="autocomplete-ajax" placeholder="City or State or Country"  value="" class="inputForm" /></td>
+
             <td><input type="image" width="97" height="32" src="./assets/css/img/btn_search.png" alt="Search">
 			</td>
           </tr>
