@@ -1,0 +1,23 @@
+<section class="content">
+
+
+
+<h1>Search.</h1>
+
+<?php
+if(check_login()){
+?>
+
+I am logged in
+
+<?php 
+}
+else if(pgname()==search2){
+
+auth_check();
+?>
+
+
+<?php } ?>
+
+</section>

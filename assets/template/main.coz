@@ -1,0 +1,26 @@
+<?php
+
+auth_check();
+
+?>
+
+<section class="content">
+<div class="box-layout">
+
+<div class="me">
+<img src="assets/css/img/logo.png" id="logo" />
+<img src="assets/css/img/img_heart.png" id="heart" />
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+  </section>
+  
+

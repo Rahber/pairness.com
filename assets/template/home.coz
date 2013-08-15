@@ -1,0 +1,6 @@
+<?php
+auth_check();
+
+?>
+<a href="account.php">My Account</a>
+<a href="logout.php">Logout</a>

@@ -1,0 +1,23 @@
+<?php   $ret = request_var('return','');  ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pairness.Com</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/bootstrap.css">
+	<link rel="stylesheet" href="./assets/css/notify.css">
+	<script>   var ret = "<?php echo  $ret ;  ?>";
+			var baseurl=  "<?php echo $sitepath;  ?>"
+	</script>
+</head>
+<body class="<?php echo pgname(); ?>">
+	<section class="container">
+		<section class="layout">
+			<section class="header">
+				<a href="./">Pairness.Com</a>
+				<div class="tp-nav" style="text-align:right">
+				<?php if(check_login()) {echo '<a id="go-to-home" href="home.php">Home</a> | <a id="logout-home" href="logout.php?">Logout</a>';} 
+				else {echo '<a id="register-mini" href="#register">Register</a> |<a id="login-mini" href="#login">Login</a>';} ?>
+				</div>
+		</section>

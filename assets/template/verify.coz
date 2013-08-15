@@ -1,0 +1,35 @@
+<section class="content">
+<?php
+if(check_login()){
+takemehome();}
+
+$email = request_var('email','');
+$key= request_var('key','');
+
+if($_POST || $_GET){
+echo verify_id($email,$key);
+}else{
+
+
+?>
+
+
+
+<div>
+<form>
+Eamil: <input type="text" name="email" required /> <br />
+Verification Key:<input type="text" name="key" required />
+<input class="verify-submit" type="submit"  value="Login">
+</form>
+</div>
+
+  
+  <?php
+  
+  }
+  ?>
+  
+
+
+
+  </section>

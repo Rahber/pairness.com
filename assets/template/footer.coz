@@ -1,0 +1,14 @@
+
+<div class="login abs"></div>
+<section class="loader">
+<img src="./assets/css/img/loading_spinner.gif" alt="" />
+</section>
+</section>
+</section>
+<script type='text/javascript' src='./assets/js/jquery.js'></script>
+<script type='text/javascript' src='./assets/js/boot.js'></script>
+<script type='text/javascript' src='./assets/js/notifications.js'></script>
+<script type='text/javascript' src='./assets/js/pairness.js'></script>
+
+</body>
+</html>
