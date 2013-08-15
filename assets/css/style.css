@@ -120,20 +120,20 @@ input[type="text"][readonly] {
    background: grey;
 }
 
-.login {
-	padding: 10px 60px;
-	background: #820503;
+.not-wrapper{
 	left: 40%;
 	top: 50%;
-	color:white;
-	border-radius: 20px;
-	text-align: center;
 	display:none;
-	border:10px solid rgba(0,0,0,0.25);
+	padding: 10px 60px;
+	background: #820503;
+	border-radius: 20px;
+	border:10px solid rgba(0,0,0,0.25);	
+	color:white;
+		text-align: center;
 }
 
 
-.login a {
+.not a {
 	color:white;
 }
 

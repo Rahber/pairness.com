@@ -1,5 +1,8 @@
 
-<div class="login abs"></div>
+<div class="not-wrapper abs">
+
+<div class="not abs"></div>
+</div>
 <section class="loader">
 <img src="./assets/css/img/loading_spinner.gif" alt="" />
 </section>
