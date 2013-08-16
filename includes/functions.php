@@ -442,7 +442,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 
 function start_app(){
 	global $mysqli,$sitepath;
-	$mysqli = new mysqli("localhost", "root", "", "pairness");
+	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
