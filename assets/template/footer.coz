@@ -13,7 +13,7 @@
 <script type='text/javascript' src='./assets/js/notifications.js'></script>
 <script type="text/javascript" src="./assets/js/tcal.js"></script>
 <script type="text/javascript" src="./assets/js/tcal_two.js"></script>
-
+<script type='text/javascript' src='./assets/js/mock.js'></script>
 <script type="text/javascript" src="./assets/js/complete.js"></script>
 <script type='text/javascript' src='./assets/js/pairness.js'></script>
 
