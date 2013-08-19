@@ -418,6 +418,7 @@ function cron_session(){
 }
 
 function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
+	global $contactemail;
     $to = $email; 
     $from = $contactemail; 
 
@@ -441,7 +442,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function start_app(){
-	global $mysqli,$sitepath;
+	global $mysqli,$sitepath,$contactemail;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
