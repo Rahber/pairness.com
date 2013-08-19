@@ -75,6 +75,11 @@ color:#fde679; font-size:15px; font-family:Candara; font-style:italic;
 	text-decoration:underline;
 }
 
+#searchr tr:first-child
+{ 
+background-color:yellow;
+}
+
 .layout{
 	padding:0px 20px;
 	margin: 0 auto;

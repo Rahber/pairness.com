@@ -446,6 +446,9 @@ function start_app(){
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
+	$searchpage = "search.php";
+	$accountpage = 'account.php';
+	
 	error_reporting(0);
 	startSession();
 	update_session();
