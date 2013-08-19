@@ -10,7 +10,7 @@ auth_check();
   <tr>
     <td height="75px"><table width="245" border="0" align="right" cellpadding="0" cellspacing="0" height="28px">
       <tr>
-        <td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#login" id="login-mini"> Member Login <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
+        <td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#login" class="login-mini"> Member Login <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
         <td>&nbsp;</td>
 		<td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#register" id="register-mini"> Register Now <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
       </tr>
