@@ -513,52 +513,19 @@
 	});
 
 	$.mockjaxSettings = {
-		//url:        null,
-		//type:       'GET',
-		log:          function( msg ) {
-			if (window['console'] && window.console.log) {
-				if (!Function.prototype.bind) {
-					console.log(Array.prototype.slice.call(arguments).join(', '));
-					return;
-				}
-				var log = Function.prototype.bind.call(console.log, console);
-				log.apply(console, arguments);
-			}
-		},
-		status:       200,
-		statusText:   "OK",
-		responseTime: 500,
-		isTimeout:    false,
-		contentType:  'text/plain',
-		response:     '',
-		responseText: '',
-		responseXML:  '',
-		proxy:        '',
-		proxyType:    'GET',
-
-		lastModified: null,
-		etag:         '',
-		headers: {
-			etag: 'IJF@H#@923uf8023hFO@I#H#',
-			'content-type' : 'text/plain'
-		}
+		
 	};
 
 	$.mockjax = function(settings) {
-		var i = mockHandlers.length;
-		mockHandlers[i] = settings;
-		return i;
+
 	};
 	$.mockjaxClear = function(i) {
-		if ( arguments.length == 1 ) {
-			mockHandlers[i] = null;
-		} else {
-			mockHandlers = [];
-		}
+
+		//}
 	};
 	$.mockjax.handler = function(i) {
-	  if ( arguments.length == 1 ) {
-			return mockHandlers[i];
-		}
+	  //if ( arguments.length == 1 ) {
+		//	return mockHandlers[i];
+		//}
 	};
 })(jQuery);
