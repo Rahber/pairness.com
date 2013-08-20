@@ -297,7 +297,7 @@ function do_login($email,$password,$remember,$return){
 				$ds = session_id();
 				$_SESSION['id'] = $row ->uid;
 				$_SESSION['email'] = $row ->email;
-				$_SESSION['name'] = $row ->name;
+				$_SESSION['name'] = $row ->username;
 				$_SESSION['privacylevel'] = $row ->privacylevel;
 				$_SESSION['host'] = $_SERVER['HTTP_HOST'];
 				$_SESSION['true'] = $ds;
@@ -442,13 +442,17 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function start_app(){
-	global $mysqli,$sitepath,$contactemail;
+	global $mysqli,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
 	$searchpage = "search.php";
-	$accountpage = 'account.php';
+	$accountpage = "account.php";
+	$homepage = "home.php";
+	$inboxpage ="inbox.php";
+	$explorepage = "explore.php";
+	$logoutpage = "logout.php";
 	
 	error_reporting(0);
 	startSession();

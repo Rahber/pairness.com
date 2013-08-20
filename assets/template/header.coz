@@ -19,16 +19,40 @@
 	<section class="container">
 	
 		
-			<section class="header">
+<section class="header">
+<?php
+if(pgname()!='index'){
+?>
 
-    <div class="tps"></div>
+<div class="hdr">
+	<div class="logo">
+		<img src="./assets/css/img/logo_pairness.png" width="280" height="64" />
+	</div>
+	<div class="usr-img">
+		<img src="./assets/css/img/pic_img_small.png" width="44" height="48" align="absmiddle" /> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" />
+	</div>
+</div>
+</section>
+<section class="navbar">
+<div class="nav">
+<a class="topmenu" href="<?php  echo $homepage; ?>">Home</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $searchpage; ?>">Search</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $matchpage; ?>">Matches</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $inboxpage; ?>">Inbox</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $explorepage; ?>">Explore</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $logoutpage; ?>">Logout</a>
+</div>
+<?php   }else {  echo "<!--   Header to be added -->";  } ?>	
+	
 
-<!--
-							<a href="./">Pairness.Com</a>
-				<div class="tp-nav" style="text-align:right">
-				<?php if(check_login()) {echo '<a id="go-to-home" href="home.php">Home</a> | <a id="logout-home" href="logout.php?">Logout</a>';} 
-				else {echo '<a id="register-mini" href="#register">Register</a> |<a id="login-mini" href="#login">Login</a>';} ?>
-				</div>
-				
-				-->
 		</section><section class="layout">
+		<?php if(pgname()!='index'){
+		echo '<div class="page">';
+		
+		}
+		?>

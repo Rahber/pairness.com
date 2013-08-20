@@ -3,11 +3,23 @@
 
 <div class="not abs"></div>
 </div>
+
+<?php if(pgname()!='index'){
+
+?>
+			
+		</div><div class="pagef"></div>
+		<div class="ml blacktext">We'll never share your email with a third party.</div>
+		<div  class="ml footerlinktxt"><a class="flink" href="#">Privacy Statement</a> &amp; <a class="flink" href="#">Terms of Use</a></div>
+		<div class="ml footertxt">A Division of Cozmuler Networks. Inc..</div>
+		<?php
+		}
+		?>
+</section>
 <section class="loader">
 <img src="./assets/css/img/loading_spinner.gif" alt="" />
 </section>
-</section>
-</section>
+<section class="spt">
 <script type='text/javascript' src='./assets/js/jquery.js'></script>
 <script type='text/javascript' src='./assets/js/boot.js'></script>
 <script type='text/javascript' src='./assets/js/notifications.js'></script>
@@ -16,7 +28,6 @@
 <script type='text/javascript' src='./assets/js/mock.js'></script>
 <script type="text/javascript" src="./assets/js/complete.js"></script>
 <script type='text/javascript' src='./assets/js/pairness.js'></script>
-
-
+</section>
 </body>
 </html>

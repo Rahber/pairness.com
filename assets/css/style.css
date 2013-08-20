@@ -141,7 +141,7 @@ input[type="text"][readonly] {
 }
 
 
-.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestions { overflow:hidden; border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #F0F0F0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
@@ -156,4 +156,58 @@ input[type="text"][readonly] {
 
 a{
 	color:white !important;
+}
+
+.logo{
+	float:left;
+	
+}
+
+.hdr{
+	width: 100%;
+	margin-top:50px;
+}
+
+.usr-img{
+	color: white;
+	float:right;
+}
+
+.ml{
+	text-align:center;
+}
+
+.navbar {
+padding: 40px 20px 0px 20px;
+}
+
+.nav{
+	margin-top:50px;
+	clear: both;
+	border-radius: 5px 5px 0px 0px;
+	height:36px;
+	width:100%;
+	background:rgb(255, 181, 197);
+}
+
+span.sep{
+	width:4px;
+	height:100px;
+	background-image: url('./img/menu_bg_03.png');
+}
+
+.topmenu {
+	margin: 0px 20px;
+}
+
+.page{
+	background:white;
+}
+
+.pagef{
+	background:rgb(255, 181, 197);
+	border-radius: 0px 0px 5px 5px;
+	height:30px;
+	width:100%;
+	margin-bottom: 20px;
 }
