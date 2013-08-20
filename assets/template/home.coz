@@ -1,7 +1,11 @@
 <?php
-//auth_check();
+auth_check();
 
 ?>
+
+
+
+
 
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -12,138 +16,11 @@
           <tr>
             <td height="10px">&nbsp;</td>
           </tr>
-          <tr>
-            <td><table width="990" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="20">&nbsp;</td>
-                <td width="200"><table width="200" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td class="textsegoblue" align="center">Hello Mr. Fawad  <span class="maintxt11">(PN0001003)</span></td>
-                  </tr>
-                  <tr>
-                    <td height="5px"></td>
-                  </tr>
-                  <tr>
-                    <td><table width="200" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td><img src="./assets/css/img/userbox_01.png" width="200" height="4" /></td>
-                      </tr>
-                      <tr>
-                        <td background="images/userbox_02.png">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td background="images/userbox_02.png"><table width="200" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td width="80" align="center"><img src="./assets/css/img/pic_img_medium.png" width="61" height="76" /></td>
-                            <td class="txtblue">Edit Profile<br />
-                              Manage Photos<br />
-                              Edit Preferences</td>
-                          </tr>
-                        </table></td>
-                      </tr>
-                      <tr>
-                        <td background="images/userbox_02.png">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td><img src="./assets/css/img/userbox_03.png" width="200" height="4" /></td>
-                      </tr>
-                    </table></td>
-                  </tr>
+         
                   <tr>
                     <td height="10px"></td>
                   </tr>
-                  <tr>
-                    <td background="images/left_bg.png"><table width="200" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td height="29px" background="images/bluebar.png" class="regtopheading" align="center">Inbox</td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" />Emails</td>
-                      </tr>
-                      <tr>
-                        <td bgcolor="#dbdbdb" height="1px"></td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" />Intrests</td>
-                      </tr>
-                      <tr>
-                        <td bgcolor="#dbdbdb" height="1px"></td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" />Requests</td>
-                      </tr>
-                      
-                      <tr>
-                        <td height="29px" background="images/greenbar.png" class="regtopheading" align="center">Accepted</td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><span class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" /></span>Members</td>
-                      </tr>
-                      <tr>
-                        <td height="1px" bgcolor="#dbdbdb" class="maintxt12"></td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><span class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" /></span>Request</td>
-                      </tr>
-                                           
-                      <tr>
-                        <td height="29px" background="images/bluebar.png" class="regtopheading" align="center">Sent</td>
-                      </tr>
-                      <tr>
-                        <td height="36px" class="maintxt12"><span class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" /></span>Email</td>
-                      </tr>
-                      <tr>
-                        <td height="1px" bgcolor="#dbdbdb" class="maintxt12"></td>
-                      </tr>
-                      
-                      <tr>
-                        <td height="36px" class="maintxt12"><span class="maintxt12"><img src="./assets/css/img/spacer50.png" width="50" height="10" /></span>Requests</td>
-                      </tr>
-                      
-                      <tr>
-                        <td><img src="./assets/css/img/left_footer.png" width="200" height="2" /></td>
-                      </tr>
-                    </table></td>
-                  </tr>
-                  <tr>
-                    <td height="10px"></td>
-                  </tr>
-                  <tr>
-                    <td><table width="200" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td height="27px" background="images/unlockbar01.png" class="regtopheading2" align="center">Upgrade &amp; Unlock...</td>
-                      </tr>
-                      <tr>
-                        <td><img src="./assets/css/img/unlockbar02.png" width="200" height="16" /></td>
-                      </tr>
-                      <tr>
-                        <td background="images/left_bg.png"><table width="200" border="0" cellspacing="5" cellpadding="0">
-                          <tr>
-                            <td width="30" align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">Send Emails directly</td>
-                          </tr>
-                          <tr>
-                            <td align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">Chat Instantly on IM</td>
-                          </tr>
-                          <tr>
-                            <td align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">View Verified Phone Nos.</td>
-                          </tr>
-                          <tr>
-                            <td align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">Access detailed Profiles</td>
-                          </tr>
-                          <tr>
-                            <td align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">Enjoy Private Browsing</td>
-                          </tr>
-                          <tr>
-                            <td align="center"><img src="./assets/css/img/icon_tick.png" width="20" height="20" /></td>
-                            <td class="maintxt11">Get Noticed by more Members</td>
-                          </tr>
-                        </table></td>
-                      </tr>
+                  
                       
                       <tr>
                         <td height="25px" align="center" background="images/unlockbar03.png" class="blacktext">Know more / Upgrade now</td>

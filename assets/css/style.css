@@ -1,5 +1,8 @@
 /* CSS Document */
 
+html{
+	border-top: 8px solid black;
+}
 html, body {
 margin:0px;
 padding:0px;
@@ -126,7 +129,7 @@ input[type="text"][readonly] {
 }
 
 .not-wrapper{
-	left: 40%;
+	 left: 40%;
 	top: 50%;
 	display:none;
 	padding: 10px 60px;
@@ -141,10 +144,21 @@ input[type="text"][readonly] {
 }
 
 
-.autocomplete-suggestions { overflow:hidden; border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
-.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #F0F0F0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-suggestions { 
+	overflow:hidden; border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); 
+	}
+	
+.autocomplete-suggestion { 
+	padding: 2px 5px; white-space: nowrap; overflow: hidden; 
+	}
+	
+.autocomplete-selected { 
+	background: #F0F0F0; 
+	}
+	
+.autocomplete-suggestions strong { 
+	font-weight: normal; color: #3399FF; 
+	}
 
 .not a {
 	color:white;
@@ -178,22 +192,22 @@ a{
 }
 
 .user-opt a{
-color:red !important;
+	color:red !important;
 }
 .user-opt {
-margin-left: 15px;
-margin-top: -15px;
-position: absolute;
-z-index: 1;
-padding: 20px;
-opacity: 0.8;
-display: none;
-float: right;
-background: white;
+	margin-left: 15px;
+	margin-top: -15px;
+	position: absolute;
+	z-index: 1;
+	padding: 20px;
+	opacity: 0.8;
+	display: none;
+	float: right;
+	background: white;
 }
 
 .navbar {
-padding: 40px 20px 0px 20px;
+	padding: 40px 20px 0px 20px;
 }
 
 .nav{
@@ -217,6 +231,7 @@ span.sep{
 
 .page{
 	background:white;
+	float: left;
 }
 
 .pagef{
@@ -225,4 +240,70 @@ span.sep{
 	height:30px;
 	width:100%;
 	margin-bottom: 20px;
+	float:left;
+}
+
+.side-bar,.main-body{
+	float:left;
+}
+
+.side-bar{
+	width:22%;
+}
+
+.main-body{
+	width:77%;
+}
+
+.blue{
+	background: #02609e;
+}
+
+.green{
+	background: green;
+}
+
+
+
+.gray{
+	background-color:grey;
+}
+
+.impfl img{
+	float:left;
+}
+
+.txtblue{
+	color: #02609e;
+	font-size: 11px;
+}
+
+.txtblue a {
+	color: #02609e !important;
+}
+
+.bar{
+	height:35px;
+	text-align:center;
+	color:white;
+	padding-top:5px;
+	
+}
+.sub-bar{
+	text-align:Center;
+	border-collapse: separate;
+	padding:10px;
+
+}
+.dpl{
+	width: 90%;
+	float: left;
+	margin-right:10px;
+	margin-left:10px;
+	text-align:Center;
+	margin-top:20px;
+	border-left:1px solid;
+	border-bottom:1px solid;
+	border-right:1px solid;
+	border-color: gray;
 }

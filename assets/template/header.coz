@@ -53,7 +53,44 @@ if(pgname()!='index'){
 
 		</section><section class="layout">
 		<?php if(pgname()!='index'){
-		echo '<div class="page">';
+		
+		?>
+		
+		<div class="page">
+		<div class="home-body">
+<div class="side-bar">
+<div class="dpl">
+<div class="gray bar">
+Profile
+</div><div class="impfl">
+<img src="./assets/css/img/pic_img_medium.png" width="61" height="76" />
+Hello <?php  echo $_SESSION['name'];  ?>
+<div class="txtblue">
+<a href="<?php echo $profilepage; ?>">Edit Profile<br />
+                              <a href="<?php echo $photospage; ?>">Manage Photos</a><br />
+                              <a href="<?php echo $settingspage; ?>">Edit Preferences</a></div></div>
+</div>
+
+<div class="dpl">
+<div class="blue bar">
+Inbox
+</div>
+<div class="sub-bar">Emails</div>
+<div class="sub-bar">Requests</div>
+
+<div class="green bar">
+Proposals
+</div>
+<div class="sub-bar">Sent</div>
+<div class="sub-bar">Recieved</div>
+</div>
+
+</div>
+
+<div class="main-body">
+		
+		
+		<?php
 		
 		}
 		?>

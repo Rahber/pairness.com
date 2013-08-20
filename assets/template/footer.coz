@@ -7,7 +7,9 @@
 <?php if(pgname()!='index'){
 
 ?>
-			
+		</div>
+
+</div>	
 		</div><div class="pagef"></div>
 		<div class="ml blacktext">We'll never share your email with a third party.</div>
 		<div  class="ml footerlinktxt"><a class="flink" href="#">Privacy Statement</a> &amp; <a class="flink" href="#">Terms of Use</a></div>
@@ -25,7 +27,6 @@
 <script type='text/javascript' src='./assets/js/notifications.js'></script>
 <script type="text/javascript" src="./assets/js/tcal.js"></script>
 <script type="text/javascript" src="./assets/js/tcal_two.js"></script>
-<script type='text/javascript' src='./assets/js/mock.js'></script>
 <script type="text/javascript" src="./assets/js/complete.js"></script>
 <script type='text/javascript' src='./assets/js/pairness.js'></script>
 </section>
