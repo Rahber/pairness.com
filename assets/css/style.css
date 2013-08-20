@@ -177,6 +177,21 @@ a{
 	text-align:center;
 }
 
+.user-opt a{
+color:red !important;
+}
+.user-opt {
+margin-left: 15px;
+margin-top: -15px;
+position: absolute;
+z-index: 1;
+padding: 20px;
+opacity: 0.8;
+display: none;
+float: right;
+background: white;
+}
+
 .navbar {
 padding: 40px 20px 0px 20px;
 }

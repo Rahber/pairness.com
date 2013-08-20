@@ -29,7 +29,8 @@ if(pgname()!='index'){
 		<img src="./assets/css/img/logo_pairness.png" width="280" height="64" />
 	</div>
 	<div class="usr-img">
-		<img src="./assets/css/img/pic_img_small.png" width="44" height="48" align="absmiddle" /> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" />
+		<img src="./assets/css/img/pic_img_small.png" width="44" height="48" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
+		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a></div>
 	</div>
 </div>
 </section>
