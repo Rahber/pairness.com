@@ -442,7 +442,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function start_app(){
-	global $mysqli,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
+	global $mysqli,$membershippage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
@@ -456,6 +456,7 @@ function start_app(){
 	$photospage = "photos.php";
 	$settingspage = "settings.php";
 	$profilepage = "profile.php";
+	$membershippage ="membership.php";
 	
 	error_reporting(0);
 	startSession();
