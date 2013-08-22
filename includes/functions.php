@@ -284,6 +284,21 @@ global $mysqli;
 	}
 }
 
+
+function user_image(){
+
+global $uploadpath;
+$e = $_SESSION['email'];
+
+global $mysqli;
+	$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$e')");
+	while ($row = $queryy->fetch_object()){
+		 return  $uploadpath.$row ->familyprofileimage;
+	}
+	return $uploadpath. "default.png";
+
+}
+
 function do_login($email,$password,$remember,$return){
 	session_regenerate_id();
 	
@@ -442,7 +457,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function start_app(){
-	global $mysqli,$membershippage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
+	global $mysqli,$membershippage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
@@ -457,6 +472,8 @@ function start_app(){
 	$settingspage = "settings.php";
 	$profilepage = "profile.php";
 	$membershippage ="membership.php";
+	$matchpage = "match.php";
+	$uploadpath = $sitepath. "/upload_images/";
 	
 	error_reporting(0);
 	startSession();

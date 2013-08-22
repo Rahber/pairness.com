@@ -246,6 +246,7 @@ span.sep{
 .page{
 	background:white;
 	float: left;
+	width: 100%;
 }
 
 .pagef{
@@ -263,9 +264,12 @@ span.sep{
 
 .side-bar{
 	width:22%;
+	margin-bottom: 10px;
+	height: 100%;
 }
 
 .main-body{
+	margin-top: 20px;
 	width:77%;
 }
 
