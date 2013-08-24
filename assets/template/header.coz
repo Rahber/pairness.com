@@ -82,10 +82,11 @@ Your Listings
 </div>
 
 <?php  
+
 	$ffd = $_SESSION['id'];
 	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
 	while ($row = $queryy->fetch_object()){
-		 echo '<div class="sub-bar"><a href="viewprofile.php?id='.$row ->id.'">'.$row ->familyfullname.'</a></div>';
+		 echo '<div class="sub-bar"><a href="viewprofile.php?view='.md5($row ->id).'">'.$row ->familyfullname.'</a></div>';
 	}
 ?>
 
@@ -117,7 +118,8 @@ Upgrade Now!
 
 </ul>
 
-<div class="sub-bar"><a href="<?php echo $membershippage;?>">Learn More!</a></div>
+
+<div class="sub-bar"><a href="<?php echo $membershippage;?>?c=<?php echo base64_encode($_SESSION['privacylevel']) ?>">Learn More!</a></div>
 
 </div>
 
