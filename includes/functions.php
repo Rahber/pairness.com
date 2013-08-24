@@ -16,8 +16,7 @@ global $mysqli;
 function startSession($timeout = 600){
 	global $mysqli;
 	session_name('czid');
-	ini_set('session.gc_maxlifetime', 600);
-	session_set_cookie_params(600);
+	session_set_cookie_params(0);
 	session_start();
 
 	if (isset($_SESSION['timeout_idle']) && $_SESSION['timeout_idle'] < time()) {
@@ -28,8 +27,11 @@ function startSession($timeout = 600){
         session_start();
         session_regenerate_id();
         $_SESSION = array();
-    }
-    $_SESSION['timeout_idle'] = time() + $timeout;
+		
+    }else{
+	$_SESSION['timeout_idle'] = time() + $timeout;
+	}
+    
 
 }
 
@@ -55,16 +57,18 @@ redirect("home.php");
 }
 
 function update_session(){
+	if(check_login()){
 	global $mysqli;
-	$sep = $_SESSION['true'];
-	$id = $_SESSION['id'];
-	$t = time();
-	if($mysqli->query("UPDATE session set t='$t' where (sessionid='$sep' and uid ='$id')")){
-		return true;
-	}
-	else {
-		return false;
-	}
+		$sep = $_SESSION['true'];
+		$id = $_SESSION['id'];
+		$t = time();
+		if($mysqli->query("UPDATE session set t='$t' where (sessionid='$sep' and uid ='$id')")){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}else{  return false;  }
 }
 
 function randomalpha($length){ 
@@ -276,14 +280,36 @@ function short($string, $limit, $break=".", $pad="..."){
 	return $string;
 }
 
+function isfamily(){
+	global $mysqli;
+	$u= $_SESSION['id'];
+	$queryy = $mysqli->query("select * from login where uid='$u'");
+	while ($row = $queryy->fetch_object()){
+		$vf = $row->isfamily;
+	}
+	if($vf==1){
+		return true;
+	}else{
+	 return false;
+	}
+	
+}
+
 function is_vf($email){
-global $mysqli;
+	global $mysqli;
 	$queryy = $mysqli->query("select * from login where (email='$email' || username='$email' )");
 	while ($row = $queryy->fetch_object()){
 	return $vf = $row->emailverification;
 	}
 }
 
+function fstatus(){
+  if(isfamily()){ 
+return "You are logged in as a family member";
+ }else{
+return "You are logged in as a bride or groom";
+ } 
+}
 
 function user_image(){
 
@@ -345,15 +371,23 @@ function insert_ses($a,$b){
 }
 
 function check_login(){
-	$id= $_SESSION['id'];
-	$ddd = session_id() ;		
-		if($_SESSION['id']!=0 &&isset($_SESSION['id']) && isset($_SESSION['email']) && ($_SESSION['host']==$_SERVER['HTTP_HOST']) &&($_SESSION['true'] == $ddd) ){	
+	$ddd = session_id() ;global $mysqli;		
+	if(isset($_SESSION['id'])){	
+				
+		$queryy = $mysqli->query("select * from session where (sessionid='$ddd')");
+		$row_cnt = $queryy->num_rows;
+	
+		if($row_cnt==1){
 			return true;
-		}
-		else{
-			add_log($_SESSION['id'],"User session was expired!");
+		}else{
 			return false;
 		}
+	
+	}
+	else{
+			
+		return false;
+	}
 }
 
 function remove_http($url) {
@@ -483,5 +517,6 @@ function start_app(){
 }
 
 start_app();
+
 
 ?>

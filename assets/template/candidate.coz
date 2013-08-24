@@ -1,10 +1,18 @@
 <?php
-$familyid = $_SESSION['familyid'];
+$familyid = $_SESSION['uid'];
 ?>
 				
 				<h1>Register Now!</h1>
 <form name="candidate" id="register-form" method="post" action="./ajax/do-register.php" enctype="multipart/form-data">
   <table width="400" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>Your Name:</td>
+    <td><input type="text" required="required" placeholder="Enter Your Name" name="name" id="name" /></td>
+  </tr>
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
   <tr>
     <td>Your Email:</td>
     <td><input type="text" required="required" placeholder="Enter Your Email" name="email" id="email" /></td>
@@ -26,8 +34,7 @@ $familyid = $_SESSION['familyid'];
     <td><input type="password" required="required" placeholder="Enter Your Password" name="password" id="password" /></td>
   </tr>
   <tr>
-    <td><input type="hidden" name="id" id="id" value="<?php echo $idd;?>"/></td>
-    <td><input type="hidden" name="parentid" id="parentid" value="<?php echo $parientid;?>"/></td>
+    <td><input type="hidden" name="familyid" id="familyid" value="<?php echo $parientid;?>"/></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

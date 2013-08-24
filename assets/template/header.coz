@@ -50,12 +50,13 @@ if(pgname()!='index'){
 <a class="topmenu" href="<?php  echo $explorepage; ?>">Explore</a>
 <img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $logoutpage; ?>">Logout</a>
+<span class="fstatus right">  <?php  echo fstatus(); ?> </span>
 </div>
 <?php   }else {  echo "<!--   Header to be added -->";  } ?>	
 	
 
 		</section><section class="layout">
-		<?php if(pgname()!='index' && check_login()){
+		<?php if(pgname()!='index' &&pgname()!='candidate' && check_login()){
 		
 		?>
 		
@@ -76,11 +77,25 @@ Hello <?php  echo $_SESSION['name'];  ?>
 
 <div class="dpl">
 <div class="blue bar">
+<?php if(isfamily()){ ?>
+Your Listings
+</div>
+
+<?php  
+	$ffd = $_SESSION['id'];
+	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
+	while ($row = $queryy->fetch_object()){
+		 echo '<div class="sub-bar"><a href="viewprofile.php?id='.$row ->id.'">'.$row ->familyfullname.'</a></div>';
+	}
+?>
+
+
+<?php  }else{ ?>
 Inbox
 </div>
 <div class="sub-bar"><a href="#">Emails</a></div>
 <div class="sub-bar"><a href="#">Requests</a></div>
-
+<?php }?>
 <div class="green bar">
 Proposals
 </div>

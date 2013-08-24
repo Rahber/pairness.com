@@ -368,3 +368,19 @@ span.sep{
 .sub-bar a{
 		color: #2C2D2E !important;
 }
+
+.right{
+	float:right;
+}
+
+.left{
+	float:left;
+}
+
+.fstatus{
+	background:#02609e;
+	padding:10px 10px 0px 10px;
+	height: 100%;
+	color:white;
+	border-radius: 0px 5px 0px 0px;
+}
