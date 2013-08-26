@@ -1,8 +1,16 @@
 <?php
-$familyid = $_SESSION['uid'];
+remove_session();
+if(check_login()){
+
+redirect($candidatepage);
+}
+
+
 ?>
 				
 				<h1>Register Now!</h1>
+				
+				
 <form name="candidate" id="register-form" method="post" action="./ajax/do-register.php" enctype="multipart/form-data">
   <table width="400" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -34,7 +42,7 @@ $familyid = $_SESSION['uid'];
     <td><input type="password" required="required" placeholder="Enter Your Password" name="password" id="password" /></td>
   </tr>
   <tr>
-    <td><input type="hidden" name="familyid" id="familyid" value="<?php echo $parientid;?>"/></td>
+    <td><input type="hidden" name="isfamily" id="isfamily" value="<?php echo $f;?>"/></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -42,7 +50,7 @@ $familyid = $_SESSION['uid'];
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="submit" name="submit" class="register-submit" id="submit" value="Submit" />&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" id="reset" value="Reset" /></td>
+    <td><input type="image" src="./assets/css/img/login_bg.png" name="submit" class="register-submit" id="submit" value="Submit" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

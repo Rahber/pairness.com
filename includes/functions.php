@@ -506,6 +506,7 @@ function start_app(){
 	$settingspage = "settings.php";
 	$profilepage = "profile.php";
 	$membershippage ="membership.php";
+	$candidatepage ="candidate.php";
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	

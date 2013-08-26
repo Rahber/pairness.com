@@ -1,4 +1,6 @@
-<?php   $ret = request_var('return','');  ?>
+<?php   $ret = request_var('return','');  
+		if(pgname()=='candidate'){$f= request_var('f',0);  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +41,7 @@ if(pgname()!='index'){
 </section>
 <section class="navbar">
 <div class="nav">
+<?php if(check_login()){ ?>
 <a class="topmenu" href="<?php  echo $homepage; ?>">Home</a>
 <img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $searchpage; ?>">Search</a>
@@ -50,7 +53,17 @@ if(pgname()!='index'){
 <a class="topmenu" href="<?php  echo $explorepage; ?>">Explore</a>
 <img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $logoutpage; ?>">Logout</a>
-<span class="fstatus right">  <?php  echo fstatus(); ?> </span>
+<?php }else{?>
+<a class="topmenu" href="<?php  echo $homepage; ?>">Home</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $searchpage; ?>">Search</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="login-mini topmenu" href="#"> Login</a>
+<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<a class="topmenu" href="<?php  echo $candidatepage; ?>?f=0">Register</a>
+
+<?php }?>
+<span class="fstatus right"><?php  if(pgname()!='index' &&pgname()!='candidate' && check_login()){  echo fstatus(); }else if(pgname()=='candidate'){  if($f==1){ echo "You are registering as a family member.";}else{echo "You are registering as a bride or groom";}  } ?></span>
 </div>
 <?php   }else {  echo "<!--   Header to be added -->";  } ?>	
 	
