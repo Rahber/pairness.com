@@ -89,7 +89,9 @@ function remove_session(){
 	global $mysqli;
 	$ds = $_SESSION['true'];
 	$mysqli->query("DELETE FROM session WHERE sessionid='$ds'");
+	if(check_login()){
 	add_log($_SESSION['id'],"User successfully logged out!");
+	}
 	
 	session_unset();
 	$_SESSION = array();
@@ -522,12 +524,17 @@ function cache_top(){
 	$urlp = $_SERVER["SCRIPT_NAME"];
 	$break = Explode('/', $urlp);
 	$filep = $break[count($break) - 1];
-	$cachefile = './cache/cached-'.substr_replace($filep ,"",-4).'.html';
+	if(check_login()){
+	$g = 'member';
+	}else{
+	$g = 'guest';
+	}
+	$cachefile = './cache/cached-'.$g.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
 
 // Serve from the cache if it is younger than $cachetime
-if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
-    echo "<!-- \n\tCached copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
+if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile) && check_login()) {
+    echo "<!-- \n\tCached ".ucfirst($g)." Copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
     include($cachefile);
     exit;
 }
@@ -555,12 +562,12 @@ function start_app(){
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	//error_reporting(0);
+	error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
 	update_lastpage(fullpagename());
-	cache_top();
+	//cache_top();
 	
 
 

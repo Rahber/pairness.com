@@ -19,17 +19,19 @@
 		?>
 </section>
 <section class="loader">
-<img src="./assets/css/img/loading_spinner.gif" alt="" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/loading_spinner.gif" alt="" />
 </section>
 <section class="spt">
-<script type='text/javascript' src='./assets/js/jquery.js'></script>
-<script type='text/javascript' src='./assets/js/boot.js'></script>
-<script type='text/javascript' src='./assets/js/notifications.js'></script>
-<script type="text/javascript" src="./assets/js/tcal.js"></script>
-<script type="text/javascript" src="./assets/js/tcal_two.js"></script>
-<script type="text/javascript" src="./assets/js/complete.js"></script>
-<script type='text/javascript' src='./assets/js/pairness.js'></script>
+<script type='text/javascript' src='<?php echo $sitepath;  ?>/assets/js/jquery.js'></script>
+<script type='text/javascript' src='<?php echo $sitepath;  ?>/assets/js/boot.js'></script>
+<script type='text/javascript' src='<?php echo $sitepath;  ?>/assets/js/notifications.js'></script>
+<script type="text/javascript" src="<?php echo $sitepath;  ?>/assets/js/tcal.js"></script>
+<script type="text/javascript" src="<?php echo $sitepath;  ?>/assets/js/tcal_two.js"></script>
+<script type="text/javascript" src="<?php echo $sitepath;  ?>/assets/js/complete.js"></script>
+<script type='text/javascript' src='<?php echo $sitepath;  ?>/assets/js/pairness.js'></script>
 </section>
 </body>
 </html>
-<?php  cache_bottom()  ?>
+<?php 
+// cache_bottom(); 
+ ?>
