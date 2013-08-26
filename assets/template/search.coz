@@ -1,8 +1,89 @@
+
+<form action="" method="post" name="search" id="search">
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>Search Here:</td>
+    <td><input type="text" name="search_text" id="search_text" size="40" required /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><select name="search_query" id="search_query" required> 
+    <option value="" >Select Search Query</option>
+    <option value="familyfullname">User Name</option>
+	<option value="	familyemailaddress">Email</option>
+	<option value="familygender">Gender</option>
+	<option value="familyseekinggender">Seeking Gender</option>
+	<option value="	familydateofbirth">Data of Birth</option>
+	<option value="familycountry">Country</option>
+	<option value="	familystate">State</option>
+	<option value="familycity">City</option>
+	<option value="familyterms">Terms</option>
+	<option value="familyfirstname">First Name</option>
+	<option value="familylastname">Last Name</option>
+	<option value="familyphone">Phone</option>
+	<option value="familycell">Mobile</option>
+	<option value="familyhaircolor">Hair Color</option>
+	<option value="familyhairtype">Hair Type</option>
+	<option value="familyeyecolor">Eye Color</option>
+	<option value="familyeyewear">Eye Wear</option>
+	<option value="familyheight">Height</option>
+	<option value="familyweight">Weight</option>
+	<option value="familybodytype">Body Type</option> 
+    <option value="familyappearance">Appearance</option>
+    <option value="familyfacialhair">Facial Hair</option>
+    <option value="familyphysicalstatus">Physical Status</option>
+    <option value="familymaritalstatus">Marital Status</option>
+    <option value="familyhavechildrens">Childrens</option>
+    <option value="familyvalues">Family Values</option>
+    <option value="familylivingsituation">Living Situation</option>
+    <option value="familylikes">Likes</option>
+    <option value="familydislikes">Dislikes</option>
+    <option value="familyzodiachormony">Zodiac Hormony</option>
+    <option value="familyfoodhabits">Food Habits</option>
+    <option value="familyeducation">Education</option>
+    <option value="familyoccupation">Occupation</option>
+    <option value="familyrelocate">Relocate</option>
+    <option value="familyreligion">Religion</option>
+    <option value="familybornreverted">Born Reverted</option>
+    <option value="familyreligiousvalues">Religious Values</option>
+    <option value="familyattendreligiousservices">Religious Services</option>
+    <option value="familymothertongue">Mother Language</option>
+    <option value="familyethnicity">Ethnicity</option>
+    <option value="familycast">Cast</option>
+    <option value="familynationality">Nationality</option>
+    <option value="familyplaceofbirth">Place of Birth</option>
+    <option value="familylanguagesspoken">Languages Spoken</option>
+    <option value="familyambition">Ambition</option>
+    <option value="familyhobbies">Hobbies</option>
+    <option value="familydreams">Dreams</option>
+    <option value="familygetmarried">Get Married</option>
+    <option value="familywantmorechildrens">More Childrens</option>
+    <option value="familydowry">Dowry</option>
+    <option value="familycnicnumber">CNIC</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" id="submit" value="Submit" />&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" id="reset" value="Reset" /></td>
+  </tr>
+</table>
+</form>
+
+
+
 <?php
 
 	if(isset($_POST['submit']))
 	{
-		$column = request_var('search_query','');
+		$column = request_var('search_query','familyfullname');
 		$value = request_var('search_text','');
 	
 	$p = $mysqli->query("SELECT * FROM pairness_family WHERE $column LIKE '%$value%'");
@@ -77,88 +158,11 @@
 	}
 				
 ?>
-<form action="" method="post" name="search" id="search">
-<table width="600" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>Search Here:</td>
-    <td><input type="text" name="search_text" id="search_text" size="40
-    " /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><select name="search_query" id="search_query"> 
-    <option value="" >Select Search Query</option>
-    <option value="familyfullname">User Name</option>
-	<option value="	familyemailaddress">Email</option>
-	<option value="familygender">Gender</option>
-	<option value="familyseekinggender">Seeking Gender</option>
-	<option value="	familydateofbirth">Data of Birth</option>
-	<option value="familycountry">Country</option>
-	<option value="	familystate">State</option>
-	<option value="familycity">City</option>
-	<option value="familyterms">Terms</option>
-	<option value="familyfirstname">First Name</option>
-	<option value="familylastname">Last Name</option>
-	<option value="familyphone">Phone</option>
-	<option value="familycell">Mobile</option>
-	<option value="familyhaircolor">Hair Color</option>
-	<option value="familyhairtype">Hair Type</option>
-	<option value="familyeyecolor">Eye Color</option>
-	<option value="familyeyewear">Eye Wear</option>
-	<option value="familyheight">Height</option>
-	<option value="familyweight">Weight</option>
-	<option value="familybodytype">Body Type</option> 
-    <option value="familyappearance">Appearance</option>
-    <option value="familyfacialhair">Facial Hair</option>
-    <option value="familyphysicalstatus">Physical Status</option>
-    <option value="familymaritalstatus">Marital Status</option>
-    <option value="familyhavechildrens">Childrens</option>
-    <option value="familyvalues">Family Values</option>
-    <option value="familylivingsituation">Living Situation</option>
-    <option value="familylikes">Likes</option>
-    <option value="familydislikes">Dislikes</option>
-    <option value="familyzodiachormony">Zodiac Hormony</option>
-    <option value="familyfoodhabits">Food Habits</option>
-    <option value="familyeducation">Education</option>
-    <option value="familyoccupation">Occupation</option>
-    <option value="familyrelocate">Relocate</option>
-    <option value="familyreligion">Religion</option>
-    <option value="familybornreverted">Born Reverted</option>
-    <option value="familyreligiousvalues">Religious Values</option>
-    <option value="familyattendreligiousservices">Religious Services</option>
-    <option value="familymothertongue">Mother Language</option>
-    <option value="familyethnicity">Ethnicity</option>
-    <option value="familycast">Cast</option>
-    <option value="familynationality">Nationality</option>
-    <option value="familyplaceofbirth">Place of Birth</option>
-    <option value="familylanguagesspoken">Languages Spoken</option>
-    <option value="familyambition">Ambition</option>
-    <option value="familyhobbies">Hobbies</option>
-    <option value="familydreams">Dreams</option>
-    <option value="familygetmarried">Get Married</option>
-    <option value="familywantmorechildrens">More Childrens</option>
-    <option value="familydowry">Dowry</option>
-    <option value="familycnicnumber">CNIC</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input type="submit" name="submit" id="submit" value="Submit" />&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" id="reset" value="Reset" /></td>
-  </tr>
-</table>
-</form>
+
 <br><br><br>
 
 
-<table width="900" border="1" cellspacing="0" cellpadding="0">
+<table width="900" border="1" cellspacing="0" cellpadding="0" id="searchr">
   <tr>
     <td>Email</td>
     <td>Gender</td>
@@ -1308,93 +1312,4 @@
 <?php 
 
 } // If ends here
-	
-else
-{
 
-?>
-
-<form action="" method="post" name="search" id="search">
-<table width="600" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>Search Here:</td>
-    <td><input type="text" name="search_text" id="search_text" size="40
-    " /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><select name="search_query" id="search_query"> 
-    <option value="" >Select Search Query</option>
-    <option value="familyfullname">User Name</option>
-	<option value="	familyemailaddress">Email</option>
-	<option value="familygender">Gender</option>
-	<option value="familyseekinggender">Seeking Gender</option>
-	<option value="	familydateofbirth">Data of Birth</option>
-	<option value="familycountry">Country</option>
-	<option value="	familystate">State</option>
-	<option value="familycity">City</option>
-	<option value="familyterms">Terms</option>
-	<option value="familyfirstname">First Name</option>
-	<option value="familylastname">Last Name</option>
-	<option value="familyphone">Phone</option>
-	<option value="familycell">Mobile</option>
-	<option value="familyhaircolor">Hair Color</option>
-	<option value="familyhairtype">Hair Type</option>
-	<option value="familyeyecolor">Eye Color</option>
-	<option value="familyeyewear">Eye Wear</option>
-	<option value="familyheight">Height</option>
-	<option value="familyweight">Weight</option>
-	<option value="familybodytype">Body Type</option> 
-    <option value="familyappearance">Appearance</option>
-    <option value="familyfacialhair">Facial Hair</option>
-    <option value="familyphysicalstatus">Physical Status</option>
-    <option value="familymaritalstatus">Marital Status</option>
-    <option value="familyhavechildrens">Childrens</option>
-    <option value="familyvalues">Family Values</option>
-    <option value="familylivingsituation">Living Situation</option>
-    <option value="familylikes">Likes</option>
-    <option value="familydislikes">Dislikes</option>
-    <option value="familyzodiachormony">Zodiac Hormony</option>
-    <option value="familyfoodhabits">Food Habits</option>
-    <option value="familyeducation">Education</option>
-    <option value="familyoccupation">Occupation</option>
-    <option value="familyrelocate">Relocate</option>
-    <option value="familyreligion">Religion</option>
-    <option value="familybornreverted">Born Reverted</option>
-    <option value="familyreligiousvalues">Religious Values</option>
-    <option value="familyattendreligiousservices">Religious Services</option>
-    <option value="familymothertongue">Mother Language</option>
-    <option value="familyethnicity">Ethnicity</option>
-    <option value="familycast">Cast</option>
-    <option value="familynationality">Nationality</option>
-    <option value="familyplaceofbirth">Place of Birth</option>
-    <option value="familylanguagesspoken">Languages Spoken</option>
-    <option value="familyambition">Ambition</option>
-    <option value="familyhobbies">Hobbies</option>
-    <option value="familydreams">Dreams</option>
-    <option value="familygetmarried">Get Married</option>
-    <option value="familywantmorechildrens">More Childrens</option>
-    <option value="familydowry">Dowry</option>
-    <option value="familycnicnumber">CNIC</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input type="submit" name="submit" id="submit" value="Submit" />&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" id="reset" value="Reset" /></td>
-  </tr>
-</table>
-</form>
-
-<?php
-
-}  // Else ends here
-
-?>

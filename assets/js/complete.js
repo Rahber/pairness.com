@@ -167,6 +167,7 @@
             });
 
             that.fixPosition();
+			
 
             that.fixPositionCapture = function () {
                 if (that.visible) {
