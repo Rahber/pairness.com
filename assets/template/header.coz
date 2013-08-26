@@ -6,14 +6,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pairness.Com</title>
-	<link rel="stylesheet" href="./assets/css/style.css">
-	<link rel="stylesheet" href="./assets/css/bootstrap.css">
-	<link rel="stylesheet" href="./assets/css/notify.css">
+	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/style.css">
+	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/notify.css">
 	<script>   var ret = "<?php echo  $ret ;  ?>";
 			var baseurl=  "<?php echo $sitepath;  ?>"
 	</script>
-	<link rel="stylesheet" type="text/css" href="./assets/css/tcal.css" />
-	<link rel="stylesheet" type="text/css" href="./assets/css/tcal_two.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $sitepath;  ?>/assets/css/tcal.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $sitepath;  ?>/assets/css/tcal_two.css" />
 
 
 </head>
@@ -28,12 +28,12 @@ if(pgname()!='index'){
 
 <div class="hdr">
 	<div class="logo">
-		<img src="./assets/css/img/logo_pairness.png" width="280" height="64" />
+		<img src="<?php echo $sitepath;  ?>/assets/css/img/logo_pairness.png" width="280" height="64" />
 	</div>
 	
 	<?php   if(pgname()!=='candidate'){?>
 	<div class="usr-img">
-		<img src="<?php echo user_image(); ?>" width="40" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
+		<img src="<?php echo user_image(); ?>" width="40" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="<?php echo $sitepath;  ?>/assets/css/img/login_aero.png" width="9" height="5" /></a>
 		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a></div>
 	</div>
 	<?php  }?>
@@ -43,23 +43,23 @@ if(pgname()!='index'){
 <div class="nav">
 <?php if(check_login()){ ?>
 <a class="topmenu" href="<?php  echo $homepage; ?>">Home</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $searchpage; ?>">Search</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $matchpage; ?>">Matches</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $inboxpage; ?>">Inbox</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $explorepage; ?>">Explore</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $logoutpage; ?>">Logout</a>
 <?php }else{?>
 <a class="topmenu" href="<?php  echo $indexpage; ?>">Home</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $searchpage; ?>">Search</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="login-mini topmenu" href="#"> Login</a>
-<img src="./assets/css/img/menu_bg_03.png" width="4" height="36" />
+<img src="<?php echo $sitepath;  ?>/assets/css/img/menu_bg_03.png" width="4" height="36" />
 <a class="topmenu" href="<?php  echo $candidatepage; ?>?f=0">Register</a>
 
 <?php }?>

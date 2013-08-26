@@ -507,6 +507,33 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 
 }
 
+function cache_bottom(){
+global $cachefile;
+// Cache the contents to a file
+$cached = fopen($cachefile, 'w');
+fwrite($cached, ob_get_contents());
+fclose($cached);
+ob_end_flush(); // Send the output to the browser
+
+}
+
+function cache_top(){
+	global $cachefile,$sitepath;
+	$urlp = $_SERVER["SCRIPT_NAME"];
+	$break = Explode('/', $urlp);
+	$filep = $break[count($break) - 1];
+	$cachefile = './cache/cached-'.substr_replace($filep ,"",-4).'.html';
+	$cachetime = 18000;
+
+// Serve from the cache if it is younger than $cachetime
+if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
+    echo "<!-- \n\tCached copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
+    include($cachefile);
+    exit;
+}
+ob_start();
+}
+
 function start_app(){
 	global $mysqli,$membershippage,$indexpage,$candidatepage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
@@ -528,11 +555,15 @@ function start_app(){
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	error_reporting(0);
+	//error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
 	update_lastpage(fullpagename());
+	cache_top();
+	
+
+
 }
 
 start_app();
