@@ -525,11 +525,11 @@ function cache_top(){
 	$break = Explode('/', $urlp);
 	$filep = $break[count($break) - 1];
 	if(check_login()){
-	$g = 'member';
+	$id= $_SESSION['id'];
 	}else{
-	$g = 'guest';
+	$id = 0;
 	}
-	$cachefile = './cache/cached-'.$g.substr_replace($filep ,"",-4).'.html';
+	$cachefile = './cache/cached-'.$id.'-'.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
 
 // Serve from the cache if it is younger than $cachetime
@@ -567,7 +567,7 @@ function start_app(){
 	update_session();
 	cron_session();
 	update_lastpage(fullpagename());
-	//cache_top();
+	cache_top();
 	
 
 

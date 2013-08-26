@@ -33,5 +33,5 @@
 </body>
 </html>
 <?php 
-// cache_bottom(); 
+ cache_bottom(); 
  ?>
