@@ -43,7 +43,7 @@ html, body {
 	-khtml-border-radius: 5px; /* KHTML */
 	border-radius: 5px; /* CSS3 */
 	height:28px;
-	border-color:#000000;
+	border:0px;
 	width:290px;
 	background-image:url(./img/img_textbox_bg.png);
 	padding-left:5px;
@@ -138,14 +138,24 @@ input[type="text"][readonly] {
 	top: 50%;
 	display:none;
 	padding: 10px 60px;
-	background: #820503;
-	border-radius: 20px;
+	background: white;
+	border-radius: 5px;
 	border:10px solid rgba(0,0,0,0.25);	
-	color:white;
+	color:black;
 	text-align: center;
 	min-width:200px;
 	margin-left:auto;
 	margin-right:auto;
+	opacity:0.97;
+}
+
+.s-register,.g-register,.blink{
+	color:black !important;
+	text-decoration:none;
+}
+
+.not-wrapper table{
+	opacity:1
 }
 
 .autocomplete-suggestions { 
@@ -386,5 +396,8 @@ span.sep{
 }
 
 .close-wrapper {
+	top: 0;
+	right: 0;
+	position: absolute;
 	text-align: right;
 }
