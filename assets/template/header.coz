@@ -33,7 +33,7 @@ if(pgname()!='index'){
 	
 	<?php   if(pgname()!=='candidate'){?>
 	<div class="usr-img">
-		<img src="<?php echo user_image(); ?>" width="44" height="48" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
+		<img src="<?php echo user_image(); ?>" width="40" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
 		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a></div>
 	</div>
 	<?php  }?>
@@ -80,7 +80,7 @@ if(pgname()!='index'){
 <div class="gray bar">
 Profile
 </div><div class="impfl">
-<img src="<?php echo user_image(); ?>" width="61" height="76" />
+<img src="<?php echo user_image(); ?>" width="70" />
 Hello <?php  echo $_SESSION['name'];  ?>
 <div class="txtblue">
 <a href="<?php echo $profilepage; ?>">Edit Profile<br />
