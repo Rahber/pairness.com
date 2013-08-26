@@ -15,7 +15,7 @@ redirect($candidatepage);
   <table width="400" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>Your Name:</td>
-    <td><input type="text" required="required" placeholder="Enter Your Name" name="name" id="name" /></td>
+    <td><input type="text" class="inputForm" required="required" placeholder="Enter Your Name" name="name" id="name" /></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
@@ -23,7 +23,7 @@ redirect($candidatepage);
   </tr>
   <tr>
     <td>Your Email:</td>
-    <td><input type="text" required="required" placeholder="Enter Your Email" name="email" id="email" /></td>
+    <td><input type="text" class="inputForm" required="required" placeholder="Enter Your Email" name="email" id="email" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -31,7 +31,7 @@ redirect($candidatepage);
   </tr>
   <tr>
     <td>User Name:</td>
-    <td><input type="text" required="required" placeholder="Enter Your User Name" name="username" id="username" /></td>
+    <td><input type="text" class="inputForm" required="required" placeholder="Enter Your User Name" name="username" id="username" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -39,7 +39,7 @@ redirect($candidatepage);
   </tr>
   <tr>
     <td>User Password:</td>
-    <td><input type="password" required="required" placeholder="Enter Your Password" name="password" id="password" /></td>
+    <td><input type="password" class="inputForm" required="required" placeholder="Enter Your Password" name="password" id="password" /></td>
   </tr>
   <tr>
     <td><input type="hidden" name="isfamily" id="isfamily" value="<?php echo $f;?>"/></td>
@@ -50,7 +50,7 @@ redirect($candidatepage);
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="image" src="./assets/css/img/login_bg.png" name="submit" class="register-submit" id="submit" value="Submit" /></td>
+    <td><input type="image" src="./assets/css/img/btn_register.png" name="submit" class="register-submit" id="submit" value="Submit" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

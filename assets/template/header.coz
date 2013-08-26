@@ -33,7 +33,7 @@ if(pgname()!='index'){
 	
 	<?php   if(pgname()!=='candidate'){?>
 	<div class="usr-img">
-		<img src="<?php echo user_image(); ?>" width="44" height="48" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
+		<img src="<?php echo user_image(); ?>" width="40" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a>
 		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a></div>
 	</div>
 	<?php  }?>
@@ -80,7 +80,7 @@ if(pgname()!='index'){
 <div class="gray bar">
 Profile
 </div><div class="impfl">
-<img src="<?php echo user_image(); ?>" width="61" height="76" />
+<img src="<?php echo user_image(); ?>" width="70" />
 Hello <?php  echo $_SESSION['name'];  ?>
 <div class="txtblue">
 <a href="<?php echo $profilepage; ?>">Edit Profile<br />
@@ -99,7 +99,7 @@ Your Listings
 	$ffd = $_SESSION['id'];
 	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
 	while ($row = $queryy->fetch_object()){
-		 echo '<div class="sub-bar"><a href="viewprofile.php?view='.md5($row ->id).'">'.$row ->familyfullname.'</a></div>';
+		 echo '<div class="sub-bar"><a href="viewprofile.php?view='.encrypt_text($row ->id).'">'.$row ->familyfullname.'</a></div>';
 	}
 ?>
 
@@ -132,7 +132,7 @@ Upgrade Now!
 </ul>
 
 
-<div class="sub-bar"><a href="<?php echo $membershippage;?>?c=<?php echo base64_encode($_SESSION['privacylevel']) ?>">Learn More!</a></div>
+<div class="sub-bar"><a href="<?php echo $membershippage;?>?c=<?php echo encrypt_text($_SESSION['privacylevel']) ?>">Learn More!</a></div>
 
 </div>
 
