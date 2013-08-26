@@ -384,3 +384,7 @@ span.sep{
 	color:white;
 	border-radius: 0px 5px 0px 0px;
 }
+
+.close-wrapper {
+	text-align: right;
+}
