@@ -10,7 +10,7 @@ auth_check();
   <tr>
     <td height="75px"><table width="245" border="0" align="right" cellpadding="0" cellspacing="0" height="28px">
       <tr>
-        <td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#login" id="login-mini"> Member Login <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
+        <td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#login" class="login-mini"> Member Login <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
         <td>&nbsp;</td>
 		<td width="119" background="./assets/css/img/login_bg.png" class="whitetext" align="center"> <a href="#register" id="register-mini"> Register Now <img src="./assets/css/img/login_aero.png" width="9" height="5" /></a></td>
       </tr>
@@ -29,16 +29,16 @@ auth_check();
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td><form>
+    <td><form id="main-form">
 	<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td width="14"><img src="./assets/css/img/searchbar_01.png" width="14" height="80" /></td>
         <td bgcolor="#000000"><table width="722" border="0" cellpadding="0" cellspacing="0">
           <tr>
-                   <td><input type="text" name="op1" placeholder="Caste or Religion or Mother Tongue" value="" class="inputForm"></td>
-            <td><input type="text" name="op2" id="autocomplete-ajax" placeholder="City or State or Country"  value="" class="inputForm" /></td>
+                   <td><input type="text" name="op1" placeholder="Caste or Religion or Mother Tongue" value="" class="inputForm op1"></td>
+            <td><input type="text" name="op2" id="autocomplete" placeholder="City or State or Country"  value="" class="inputForm op2" /></td>
 
-            <td><input type="image" width="97" height="32" src="./assets/css/img/btn_search.png" alt="Search">
+            <td><input type="image" class="image-submit" width="97" height="32" src="./assets/css/img/btn_search.png" alt="Search">
 			</td>
           </tr>
         </table></td>

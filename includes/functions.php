@@ -16,8 +16,7 @@ global $mysqli;
 function startSession($timeout = 600){
 	global $mysqli;
 	session_name('czid');
-	ini_set('session.gc_maxlifetime', 600);
-	session_set_cookie_params(600);
+	session_set_cookie_params(0);
 	session_start();
 
 	if (isset($_SESSION['timeout_idle']) && $_SESSION['timeout_idle'] < time()) {
@@ -28,8 +27,11 @@ function startSession($timeout = 600){
         session_start();
         session_regenerate_id();
         $_SESSION = array();
-    }
-    $_SESSION['timeout_idle'] = time() + $timeout;
+		
+    }else{
+	$_SESSION['timeout_idle'] = time() + $timeout;
+	}
+    
 
 }
 
@@ -55,16 +57,18 @@ redirect("home.php");
 }
 
 function update_session(){
+	if(check_login()){
 	global $mysqli;
-	$sep = $_SESSION['true'];
-	$id = $_SESSION['id'];
-	$t = time();
-	if($mysqli->query("UPDATE session set t='$t' where (sessionid='$sep' and uid ='$id')")){
-		return true;
-	}
-	else {
-		return false;
-	}
+		$sep = $_SESSION['true'];
+		$id = $_SESSION['id'];
+		$t = time();
+		if($mysqli->query("UPDATE session set t='$t' where (sessionid='$sep' and uid ='$id')")){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}else{  return false;  }
 }
 
 function randomalpha($length){ 
@@ -276,12 +280,66 @@ function short($string, $limit, $break=".", $pad="..."){
 	return $string;
 }
 
+function isfamily(){
+	global $mysqli;
+	$u= $_SESSION['id'];
+	$queryy = $mysqli->query("select * from login where uid='$u'");
+	while ($row = $queryy->fetch_object()){
+		$vf = $row->isfamily;
+	}
+	if($vf==1){
+		return true;
+	}else{
+	 return false;
+	}
+	
+}
+
 function is_vf($email){
-global $mysqli;
+	global $mysqli;
 	$queryy = $mysqli->query("select * from login where (email='$email' || username='$email' )");
 	while ($row = $queryy->fetch_object()){
 	return $vf = $row->emailverification;
 	}
+}
+
+function fstatus(){
+  if(isfamily()){ 
+return "You are logged in as a family member";
+ }else{
+return "You are logged in as a bride or groom";
+ } 
+}
+
+function encrypt_text($value)
+{
+   if(!$value) return false;
+ 
+   $crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, 'SECURE_STRING_1', $value, MCRYPT_MODE_ECB, 'SECURE_STRING_2');
+   return trim(base64_encode($crypttext));
+}
+ 
+function decrypt_text($value)
+{
+   if(!$value) return false;
+ 
+   $crypttext = base64_decode($value);
+   $decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, 'SECURE_STRING_1', $crypttext, MCRYPT_MODE_ECB, 'SECURE_STRING_2');
+   return trim($decrypttext);
+}
+
+function user_image(){
+
+global $uploadpath;
+$e = $_SESSION['email'];
+
+global $mysqli;
+	$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$e')");
+	while ($row = $queryy->fetch_object()){
+		 return  $uploadpath.$row ->familyprofileimage;
+	}
+	return $uploadpath. "default.png";
+
 }
 
 function do_login($email,$password,$remember,$return){
@@ -297,7 +355,7 @@ function do_login($email,$password,$remember,$return){
 				$ds = session_id();
 				$_SESSION['id'] = $row ->uid;
 				$_SESSION['email'] = $row ->email;
-				$_SESSION['name'] = $row ->name;
+				$_SESSION['name'] = $row ->username;
 				$_SESSION['privacylevel'] = $row ->privacylevel;
 				$_SESSION['host'] = $_SERVER['HTTP_HOST'];
 				$_SESSION['true'] = $ds;
@@ -330,15 +388,23 @@ function insert_ses($a,$b){
 }
 
 function check_login(){
-	$id= $_SESSION['id'];
-	$ddd = session_id() ;		
-		if($_SESSION['id']!=0 &&isset($_SESSION['id']) && isset($_SESSION['email']) && ($_SESSION['host']==$_SERVER['HTTP_HOST']) &&($_SESSION['true'] == $ddd) ){	
+	$ddd = session_id() ;global $mysqli;		
+	if(isset($_SESSION['id'])){	
+				
+		$queryy = $mysqli->query("select * from session where (sessionid='$ddd')");
+		$row_cnt = $queryy->num_rows;
+	
+		if($row_cnt==1){
 			return true;
-		}
-		else{
-			add_log($_SESSION['id'],"User session was expired!");
+		}else{
 			return false;
 		}
+	
+	}
+	else{
+			
+		return false;
+	}
 }
 
 function remove_http($url) {
@@ -418,6 +484,7 @@ function cron_session(){
 }
 
 function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
+	global $contactemail;
     $to = $email; 
     $from = $contactemail; 
 
@@ -441,10 +508,24 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function start_app(){
-	global $mysqli,$sitepath;
+	global $mysqli,$membershippage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
+	
+	$searchpage = "search.php";
+	$accountpage = "account.php";
+	$homepage = "home.php";
+	$inboxpage ="inbox.php";
+	$explorepage = "explore.php";
+	$logoutpage = "logout.php";
+	$photospage = "photos.php";
+	$settingspage = "settings.php";
+	$profilepage = "profile.php";
+	$membershippage ="membership.php";
+	$candidatepage ="candidate.php";
+	$matchpage = "match.php";
+	$uploadpath = $sitepath. "/upload_images/";
 	
 	error_reporting(0);
 	startSession();
