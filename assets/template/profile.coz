@@ -1,11 +1,9 @@
 <?php  
 
-
-
 if($view!=''){
 
 $v = decrypt_text($view);
-$q = $mysqli->query("select * from login where id = '$v'");
+$q = $mysqli->query("select * from login where uid = '$v'");
 while($row= $q->fetch_object()){
 	
 	$em = $row->email;	
@@ -14,13 +12,12 @@ while($row= $q->fetch_object()){
 
 }
 else{
-	echo "i am in else";
+
 
 if(!isfamily()){
-	echo $idd = $_SESSION['id'];
-	$x = "select * from login where id = '2'";
-		$qq = $mysqli->query($x);
-while($row= $qq->fetch_object()){
+$idd = $_SESSION['id'];
+		$queryy = $mysqli->query("select * from login where uid = '$idd'");
+		while ($row = $queryy->fetch_object()){
 	
 	$em = $row->email;	
 }
@@ -33,13 +30,15 @@ while($row= $qq->fetch_object()){
  }
  
  }
+
+
  
-if(isset($em)){
+if(1){
 
-$tt= $mysqli->query("select * from pairness_family where familyemailaddress = '$em')");	
+$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$em')");
 
 
-while($tt = $query->fetch_object())
+while($tt = $queryy->fetch_object())
 {
 echo $tt->familyfullname;	
 	

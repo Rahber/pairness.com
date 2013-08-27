@@ -530,14 +530,19 @@ function cache_top(){
 	$break = Explode('/', $urlp);
 	$filep = $break[count($break) - 1];
 	if(check_login()){
-	$id= $_SESSION['id'];
+	$idp= $_SESSION['id'];
 	}else{
 	$id = 0;
 	}
 	if(pgname()=='profile'){
-	$id = $id .'-'. decrypt_text($view);
+	if($view!=''){
+	$idp = $idp .'-'. decrypt_text($view);
+	}else{
+	$idp = $idp .'-0';
 	}
-	$cachefile = './cache/cached-'.$id.'-'.substr_replace($filep ,"",-4).'.html';
+	}
+	echo $idp;
+	$cachefile = './cache/cached-'.$idp.'-'.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
 
 // Serve from the cache if it is younger than $cachetime
@@ -553,7 +558,7 @@ function getvars(){
 global $ret,$f,$view;
 	$ret = request_var('return','');  
 	if(pgname()=='candidate'){$f= request_var('f',0);  }
-	if(pgname()=='profile'){$view = request_var('view','');}
+	if(pgname()=='profile'){$view = request_var('view','0');}
 }
 
 function start_app(){
@@ -590,5 +595,4 @@ function start_app(){
 }
 
 start_app();
-
 ?>
