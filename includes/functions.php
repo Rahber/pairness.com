@@ -189,7 +189,7 @@ function set_var(&$result, $var, $type, $multibyte = false)
 			}
 		}
 
-		$result = (STRIP) ? stripslashes($result) : $result;
+		//$result = (STRIP) ? stripslashes($result) : $result;
 	}
 }
 
@@ -350,6 +350,7 @@ function do_login($email,$password,$remember,$return){
 	
 	$return = remove_http($return);
 	global $mysqli;
+	if($email!='' || $password!='' ){
 	$queryy = $mysqli->query("select * from login where ((email='$email' || username='$email' )and password='$password' and emailverification='1')");
 
 		if( mysqli_num_rows($queryy)==1){
@@ -377,6 +378,10 @@ function do_login($email,$password,$remember,$return){
 				$arr = array('s' => 0,'e'=>'Inactive account or Account doesn\'t not exist');
 				return json_encode($arr);
 			}				
+		}}else{
+		$arr = array('s' => 0,'e'=>'Please fill all fields');
+				return json_encode($arr);
+		
 		}
 }
 
@@ -520,7 +525,7 @@ ob_end_flush(); // Send the output to the browser
 }
 
 function cache_top(){
-	global $cachefile,$sitepath;
+	global $cachefile,$sitepath,$view;
 	$urlp = $_SERVER["SCRIPT_NAME"];
 	$break = Explode('/', $urlp);
 	$filep = $break[count($break) - 1];
@@ -529,16 +534,26 @@ function cache_top(){
 	}else{
 	$id = 0;
 	}
+	if(pgname()=='profile'){
+	$id = $id .'-'. decrypt_text($view);
+	}
 	$cachefile = './cache/cached-'.$id.'-'.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
 
 // Serve from the cache if it is younger than $cachetime
 if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile) && check_login()) {
-    echo "<!-- \n\tCached ".ucfirst($g)." Copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
+    echo "<!-- \n\tCached  Copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
     include($cachefile);
     exit;
 }
 ob_start();
+}
+
+function getvars(){
+global $ret,$f,$view;
+	$ret = request_var('return','');  
+	if(pgname()=='candidate'){$f= request_var('f',0);  }
+	if(pgname()=='profile'){$view = request_var('view','');}
 }
 
 function start_app(){
@@ -567,6 +582,7 @@ function start_app(){
 	update_session();
 	cron_session();
 	update_lastpage(fullpagename());
+	getvars();
 	cache_top();
 	
 

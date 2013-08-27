@@ -1,6 +1,3 @@
-<?php   $ret = request_var('return','');  
-		if(pgname()=='candidate'){$f= request_var('f',0);  }
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +60,7 @@ if(pgname()!='index'){
 <a class="topmenu" href="<?php  echo $candidatepage; ?>?f=0">Register</a>
 
 <?php }?>
-<span class="fstatus right"><?php  if(pgname()!='index' &&pgname()!='candidate' && check_login()){  echo fstatus(); }else if(pgname()=='candidate'){  if($f==1){ echo "You are registering as a family member.";}else{echo "You are registering as a bride or groom";}  } ?></span>
+<?php  if(pgname()!='index' &&pgname()!='candidate' && check_login()){  echo '<span class="fstatus right">' .fstatus() . '</span>'; }else if(pgname()=='candidate'){  echo  '<span class="fstatus right">'; if($f==1){ echo "You are registering as a family member.";}else{echo "You are registering as a bride or groom";} echo '</span>'; } ?>
 </div>
 <?php   }else {  echo "<!--   Header to be added -->";  } ?>	
 	
@@ -99,7 +96,7 @@ Your Listings
 	$ffd = $_SESSION['id'];
 	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
 	while ($row = $queryy->fetch_object()){
-		 echo '<div class="sub-bar"><a href="viewprofile.php?view='.encrypt_text($row ->id).'">'.$row ->familyfullname.'</a></div>';
+		 echo '<div class="sub-bar"><a href="profile.php?view='.encrypt_text($row ->id).'">'.$row ->familyfullname.'</a></div>';
 	}
 ?>
 
