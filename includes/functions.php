@@ -577,7 +577,7 @@ function start_app(){
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	error_reporting(0);
+	//error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
