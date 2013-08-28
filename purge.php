@@ -1,14 +1,20 @@
 <?php
+/*********************************************
 
-$c=0;
+	Copyright:	Cozmuler Pakistan
+	File Name:	purge.php
+	Package:	Pairness.com
+	Author:		Rahber
 
-$files = glob('./cache/*'); // get all file names
-foreach($files as $file){ // iterate files
-  if(is_file($file))
-    unlink($file); 
-	$c++;// delete file
-}
+*********************************************/
+include('./includes/functions.php');
 
-echo $c .' files purged';
+
+
+echo purgecache();
+
+redirect('./');
+
+
 
 ?>

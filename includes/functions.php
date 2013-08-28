@@ -440,6 +440,8 @@ function auth_check(){
 	$pg = pgname();
 	if(!check_login() && $pg !='index'){
 		redirect($sitepath.'index.php?return='.$pg);
+	}else if(check_login() && $pg =='index'){
+	redirect($sitepath.'home.php');
 	}
 }
 
@@ -515,12 +517,28 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 }
 
 function cache_bottom(){
-global $cachefile;
-// Cache the contents to a file
-$cached = fopen($cachefile, 'w');
-fwrite($cached, ob_get_contents());
-fclose($cached);
-ob_end_flush(); // Send the output to the browser
+global $enablecache;
+if($enablecache==1){
+	global $cachefile;
+	// Cache the contents to a file
+	$cached = fopen($cachefile, 'w');
+	fwrite($cached, ob_get_contents());
+	fclose($cached);
+	ob_end_flush(); // Send the output to the browser
+	}
+}
+
+function purgecache(){
+$c=0;
+
+$files = glob('./cache/*'); // get all file names
+foreach($files as $file){ // iterate files
+  if(is_file($file))
+    unlink($file); 
+	$c++;// delete file
+}
+
+return $c .' files purged';
 
 }
 
@@ -534,21 +552,23 @@ while($row= $q->fetch_object()){
 }
 
 function cache_top(){
+global $enablecache;
+if($enablecache==1){
 	global $cachefile,$sitepath,$view;
 	$urlp = $_SERVER["SCRIPT_NAME"];
 	$break = Explode('/', $urlp);
 	$filep = $break[count($break) - 1];
 	if(check_login()){
-	$idp= $_SESSION['id'];
+		$idp= $_SESSION['id'];
 	}else{
-	$id = 0;
+		$idp = 0;
 	}
 	if(pgname()=='profile'){
-	if($view!='0'){
-	$idp = $idp .'-'. ($view);
-	}else{
-	$idp = $idp .'-0';
-	}
+		if($view!='0'){
+			$idp = $idp .'-'. ($view);
+		}else{
+			$idp = $idp .'-'.$idp;
+		}
 	}
 	$cachefile = './cache/cached-'.$idp.'-'.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
@@ -560,6 +580,7 @@ if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile) && ch
     exit;
 }
 ob_start();
+}
 }
 
 function getvars(){
@@ -575,11 +596,14 @@ global $ret,$f,$view;
 }
 
 function start_app(){
-	global $mysqli,$membershippage,$indexpage,$candidatepage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
+	global $mysqli,$enablecache,$purgepage,$membershippage,$indexpage,$candidatepage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
+	$enablecache = 0;
+	
+	$purgepage = "purge.php";
 	$indexpage = "index.php";
 	$searchpage = "search.php";
 	$accountpage = "account.php";
@@ -595,7 +619,7 @@ function start_app(){
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	error_reporting(0);
+	//error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
