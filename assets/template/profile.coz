@@ -1,24 +1,33 @@
 <?php  
 
 if($view!='0'){
-	$em  = getemail($view);
+ $em  = $view;
 }
 else{
 
-	if(!isfamily()){
-		$em = getemail($_SESSION['id']);
-	}
-	else{
-	echo'LIST ALL lISTINGS';
-	}
+ if(!isfamily()){
+  $m = getemail($_SESSION['id']);
+  $queryyy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$m')");
+  while($tt = $queryyy->fetch_object()){
+  $em =  $tt->id; 
+ 
+ }
+ 
+  
+ }
+ else{
+ echo'LIST ALL lISTINGS';
+ }
  
 }
 
 
 if(isset($em)){
-	$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$em')");
-	while($tt = $queryy->fetch_object()){
-		echo $tt->familyfullname;	
+ $queryy = $mysqli->query("select * from pairness_family where (id ='$em')");
+ while($tt = $queryy->fetch_object()){
+		
+		echo $tt->familyfullname;
+		
 	
 	}	
 }
