@@ -352,10 +352,10 @@ function do_login($email,$password,$remember,$return){
 	
 	$return = remove_http($return);
 	global $mysqli;
-	if($email!='' || $password!='' ){
+	if($email!='' || $password!=''){
 	$queryy = $mysqli->query("select * from login where ((email='$email' || username='$email' )and password='$password' and emailverification='1')");
 
-		if( $mysqli->num_rows==1){
+		if( ($queryy->num_rows)==1){
 			while ($row = $queryy->fetch_object()){
 				$ds = session_id();
 				$_SESSION['id'] = $row ->uid;
@@ -653,7 +653,7 @@ function start_app(){
 	$matchpage = "search.php?action=match";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	//error_reporting(0);
+	error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
