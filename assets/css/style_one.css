@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+.blink:link {
+color:#2f598d; font-size:11px; font-family:Arial, Helvetica, sans-serif; font-style:normal;
+}
+.blink:visited {
+color:#2f598d; font-size:11px; font-family:Arial, Helvetica, sans-serif; font-style:normal;
+}
+.blink:hover {
+color:#000; font-size:11px; font-family:Arial, Helvetica, sans-serif; font-style:normal;
+}
+.blink:active {
+color:#2f598d; font-size:11px; font-family:Arial, Helvetica, sans-serif; font-style:normal;
+}

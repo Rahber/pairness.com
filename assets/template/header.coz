@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Pairness.Com</title>
 	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/style_one.css">
 	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo $sitepath;  ?>/assets/css/notify.css">
 	<script>   var ret = "<?php echo  $ret ;  ?>";
