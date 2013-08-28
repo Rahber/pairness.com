@@ -524,6 +524,15 @@ ob_end_flush(); // Send the output to the browser
 
 }
 
+function getemail($id){
+global $mysqli;
+$q = $mysqli->query("select * from login where uid = '$id'");
+while($row= $q->fetch_object()){
+	
+	return $row->email;	
+}
+}
+
 function cache_top(){
 	global $cachefile,$sitepath,$view;
 	$urlp = $_SERVER["SCRIPT_NAME"];
@@ -535,13 +544,12 @@ function cache_top(){
 	$id = 0;
 	}
 	if(pgname()=='profile'){
-	if($view!=''){
-	$idp = $idp .'-'. decrypt_text($view);
+	if($view!='0'){
+	$idp = $idp .'-'. ($view);
 	}else{
 	$idp = $idp .'-0';
 	}
 	}
-	echo $idp;
 	$cachefile = './cache/cached-'.$idp.'-'.substr_replace($filep ,"",-4).'.html';
 	$cachetime = 18000;
 
@@ -558,7 +566,12 @@ function getvars(){
 global $ret,$f,$view;
 	$ret = request_var('return','');  
 	if(pgname()=='candidate'){$f= request_var('f',0);  }
-	if(pgname()=='profile'){$view = request_var('view','0');}
+	if(pgname()=='profile'){$view = request_var('view','0'); 
+	if($view=='0'){
+	}else{
+	$view = decrypt_text($view);
+	}
+	}
 }
 
 function start_app(){
@@ -582,7 +595,7 @@ function start_app(){
 	$matchpage = "match.php";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	//error_reporting(0);
+	error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();

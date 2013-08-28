@@ -1,48 +1,26 @@
 <?php  
 
-if($view!=''){
-
-$v = decrypt_text($view);
-$q = $mysqli->query("select * from login where uid = '$v'");
-while($row= $q->fetch_object()){
-	
-	$em = $row->email;	
-}
-
-
+if($view!='0'){
+	$em  = getemail($view);
 }
 else{
 
-
-if(!isfamily()){
-$idd = $_SESSION['id'];
-		$queryy = $mysqli->query("select * from login where uid = '$idd'");
-		while ($row = $queryy->fetch_object()){
-	
-	$em = $row->email;	
+	if(!isfamily()){
+		$em = getemail($_SESSION['id']);
+	}
+	else{
+	echo'LIST ALL lISTINGS';
+	}
+ 
 }
 
- }
- else
- {
- 
- echo'LIST ALL lISTINGS';
- }
- 
- }
 
-
- 
-if(1){
-
-$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$em')");
-
-
-while($tt = $queryy->fetch_object())
-{
-echo $tt->familyfullname;	
+if(isset($em)){
+	$queryy = $mysqli->query("select * from pairness_family where (familyemailaddress ='$em')");
+	while($tt = $queryy->fetch_object()){
+		echo $tt->familyfullname;	
 	
-}	
+	}	
 }
 
 
