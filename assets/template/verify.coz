@@ -3,8 +3,8 @@
 if(check_login()){
 takemehome();}
 
-$email = request_var('email','');
-$key= request_var('key','');
+$emailt = request_var('email','');
+$keyt= request_var('key','');
 
 
 
@@ -16,7 +16,7 @@ $key= request_var('key','');
 <h1>Verify your Profile</h1><br />
 <?php
 if($_POST || $_GET){
-echo verify_id($email,$key);
+echo verify_id($emailt,$keyt);
 echo "<br />";}
 
 
@@ -25,7 +25,7 @@ echo "<br />";}
   <table width="400" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>Eamil:</td>
-    <td><input type="text" class="inputForm" required="required" placeholder="Enter Your Emiail" name="email" id="email" /></td>
+    <td><input type="text" class="ipt" required="required" placeholder="Enter Your Emiail" name="email" id="email" /></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
@@ -33,7 +33,7 @@ echo "<br />";}
   </tr>
    <tr>
     <td>Verification Key:</td>
-    <td><input type="text" class="inputForm" required="required" placeholder="Enter Your Emiail" name="kry" id="key" /></td>
+    <td><input type="text" class="ipt" required="required" placeholder="Enter Your Key" name="key" id="key" /></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
@@ -41,7 +41,7 @@ echo "<br />";}
   </tr>
      <tr>
     <td>&nbsp;</td>
-    <td><input class="verify-submit" type="submit"  value="Login"></td>
+    <td><input type="image" src="./assets/css/img/btn_submit.png" name="submit" id="submit" value="Submit" /></td>
   </tr>
     <tr>
     <td>&nbsp;</td>

@@ -17,7 +17,7 @@ switch ($action) {
         break;
     case "explore":
        echo $d = '<div class="gsl"><select onchange="changegender(this.options[this.selectedIndex].value)">
-	<option>Select</option>   
+	<option>Select Preference</option>   
 	<option value="male">Male</option>
 	<option value="female">Female</option>
 	</select></div>';

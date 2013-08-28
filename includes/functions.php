@@ -452,7 +452,7 @@ function verify_id($email,$cs){
 
 
 	$query = $mysqli->query("select * from login where email='$email' and sc='$cs'");
-		if(mysqli_num_rows($query)==1){
+		if($query->num_rows==1){
 			$d =time();
 			$finfo = $query ->fetch_assoc();
 			if($finfo['emailverification']==0){
@@ -463,7 +463,7 @@ function verify_id($email,$cs){
 				$subject = "Your Email has been succsessfully verified";
 				$body = "Yay this is the bodt of succesfuly verified email";
 				send_email($email,$subject,$body);
-				return "<div class='success'>Successfully Verified.Please click <a href='login.php'>here</a> to login!</div>";
+				return "<div class='success'>Successfully Verified.Please wait while you are redirected.</div>";
 		
 
 			}else{
@@ -635,7 +635,7 @@ function start_app(){
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
-	$enablecache = 0;
+	$enablecache = 1;
 	
 	$purgepage = "purge.php";
 	$indexpage = "index.php";
