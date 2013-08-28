@@ -87,8 +87,7 @@ color:#8f8f8f; font-size:12px; font-family:Arial, Helvetica, sans-serif;
 color:#800503; font-size:13px; font-family:Segoe Script;
 }
 
-.inputForm
-{
+.inputForm{
 	-moz-border-radius:5px; /* Firefox */
 	-webkit-border-radius: 5px; /* Safari, Chrome */
 	-khtml-border-radius: 5px; /* KHTML */
@@ -102,6 +101,25 @@ color:#800503; font-size:13px; font-family:Segoe Script;
 	font-family:Book Antiqua;
 	font-size:14px;
 }
+
+
+.ipt{
+	-moz-border-radius:5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Safari, Chrome */
+	-khtml-border-radius: 5px; /* KHTML */
+	border-radius: 5px; /* CSS3 */
+	height:34px;
+	border:1px;
+	width:290px;
+	background:#ECECEC;
+	border-color:#DDDDDD;
+	padding-left:5px;
+	color:#8a8787;
+	font-family:arial;
+	font-size:14px;
+}
+
+
 
 .inputForm01
 {
@@ -556,7 +574,7 @@ span.sep{
 	text-align: right;
 }
 
-textarea:focus, input:focus{
+textarea:focus, select:focus, input:focus{
     outline: 0;
 	background:#ccc;
 }
@@ -587,4 +605,95 @@ textarea:focus, input:focus{
 .error {
 	color: #D8000C;
 	background-color: #FFBABA;
+}
+
+.search-pfl:nth-child(odd){
+	background:#e6f6fe;
+	border-color:#b0daef;
+}
+
+.search-pfl:nth-child(even){
+	background:#eef9e3;
+	border-color:#ace572;
+}
+
+.search-pfl{ 	
+	float: left;
+	margin: 20px;
+	border-width:1px;
+padding:1px;	
+	border-style:solid;
+	border-radius:5px;
+
+}
+
+.search-inner{
+	width: 390px;
+	height: 120px;
+	border:2px solid white;
+	border-radius:5px;
+}
+
+.search-go-profile,.search-go-profile:hover{
+	color:red;
+	font-size:10px;
+	text-decoration:none;
+}
+
+.search-pic img{
+	border:1px solid white;
+	border-radius:5px;
+}
+
+.search-details {
+	font-size: 12px;
+}
+
+.search-name{
+	color:#093b7a;
+}
+
+.search-pic {
+	margin-left: 12px;
+	margin-top: 12px;
+	border-width:20px;
+	border-color:inherit;
+}
+
+.search-bio{
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.search-body{
+	width:100%;
+	float:left;
+}
+
+select {
+	width: 240px;
+	height: 34px;
+	overflow: hidden;
+	background: url('./img/down_arrow_select.jpg') no-repeat right #ECECEC;
+	border: 1px solid #ccc;
+	width: 268px;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	border: 0;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	height: 34px;
+   -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+	appearance: none !important;
+	overflow:hidden;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+select::-ms-expand {
+    display: none;
 }

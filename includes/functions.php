@@ -37,7 +37,7 @@ function startSession($timeout = 600){
 
 function update_lastpage($page){
 	global $mysqli;
-	if($page!='logout.php'){
+	if($page!='logout.php' &&check_login()){
 	$id = $_SESSION['id'];
 	if($mysqli->query("UPDATE login set lastpage='$page' where uid ='$id'")){
 		return true;
@@ -518,7 +518,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 
 function cache_bottom(){
 global $enablecache;
-if($enablecache==1){
+if($enablecache==1 && check_login() &&  pgname()!='search'){
 	global $cachefile;
 	// Cache the contents to a file
 	$cached = fopen($cachefile, 'w');
@@ -529,58 +529,61 @@ if($enablecache==1){
 }
 
 function purgecache(){
-$c=0;
+	$c=0;
 
-$files = glob('./cache/*'); // get all file names
-foreach($files as $file){ // iterate files
-  if(is_file($file))
-    unlink($file); 
-	$c++;// delete file
+	$files = glob('./cache/*'); // get all file names
+		foreach($files as $file){ // iterate files
+			if(is_file($file))
+				unlink($file); 
+				$c++;// delete file
+		}
+
+	return $c .' files purged';
+
 }
 
-return $c .' files purged';
-
+function getage($dob){
+	return 21;
 }
 
 function getemail($id){
-global $mysqli;
-$q = $mysqli->query("select * from login where uid = '$id'");
-while($row= $q->fetch_object()){
-	
-	return $row->email;	
-}
+	global $mysqli;
+	$q = $mysqli->query("select * from login where uid = '$id'");
+	while($row= $q->fetch_object()){	
+		return $row->email;	
+	}
 }
 
 function cache_top(){
-global $enablecache;
-if($enablecache==1){
-	global $cachefile,$sitepath,$view;
-	$urlp = $_SERVER["SCRIPT_NAME"];
-	$break = Explode('/', $urlp);
-	$filep = $break[count($break) - 1];
-	if(check_login()){
-		$idp= $_SESSION['id'];
-	}else{
-		$idp = 0;
-	}
-	if(pgname()=='profile'){
-		if($view!='0'){
-			$idp = $idp .'-'. ($view);
+	global $enablecache;
+	if($enablecache==1 && check_login() && pgname()!='search'){
+		global $cachefile,$sitepath,$view;
+		$urlp = $_SERVER["SCRIPT_NAME"];
+		$break = Explode('/', $urlp);
+		$filep = $break[count($break) - 1];
+		if(check_login()){
+			$idp= $_SESSION['id'];
 		}else{
-			$idp = $idp .'-'.$idp;
+			$idp = 0;
 		}
-	}
-	$cachefile = './cache/cached-'.$idp.'-'.substr_replace($filep ,"",-4).'.html';
-	$cachetime = 18000;
+		if(pgname()=='profile'){
+			if($view!='0'){
+				$idp = $idp .'-'. ($view);
+			}else{
+				$idp = $idp .'-'.$idp;
+			}
+		}
+		$cachefile = './cache/cached-'.$idp.'-'.substr_replace($filep ,"",-4).'.html';
+		$cachetime = 18000;
 
 // Serve from the cache if it is younger than $cachetime
-if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile) && check_login()) {
-    echo "<!-- \n\tCached  Copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
-    include($cachefile);
-    exit;
-}
-ob_start();
-}
+		if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile) ) {
+			echo "<!-- \n\tCached  Copy, generated ".date('H:i', filemtime($cachefile))." \n\t (c) Cozmuler 2013 \n\t Author: rahber \n-->\n";
+			include($cachefile);
+		exit;
+		}
+	ob_start();
+	}
 }
 
 function getvars(){
@@ -595,13 +598,33 @@ global $ret,$f,$view;
 	}
 }
 
+function adddash(){
+	return ' - ';
+}
+
+function getfeature($value){
+	global $mysqli;
+	$result = $mysqli->query("SELECT * FROM pairness_features where id='$vvalue'");
+	while($row = $result->fetch_object()){
+		return $p = $row->name;
+	}
+}
+
+function addbreak(){
+	return "<br />";
+}
+
+function fixheight(){
+	return "5'11";
+}
+
 function start_app(){
 	global $mysqli,$enablecache,$purgepage,$membershippage,$indexpage,$candidatepage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
-	$enablecache = 0;
+	$enablecache = 1;
 	
 	$purgepage = "purge.php";
 	$indexpage = "index.php";
@@ -609,17 +632,17 @@ function start_app(){
 	$accountpage = "account.php";
 	$homepage = "home.php";
 	$inboxpage ="inbox.php";
-	$explorepage = "explore.php";
+	$explorepage = "search.php?action=explore";
 	$logoutpage = "logout.php";
 	$photospage = "photos.php";
 	$settingspage = "settings.php";
 	$profilepage = "profile.php";
 	$membershippage ="membership.php";
 	$candidatepage ="candidate.php";
-	$matchpage = "match.php";
+	$matchpage = "search.php?action=match";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	//error_reporting(0);
+	error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
