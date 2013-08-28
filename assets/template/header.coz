@@ -31,7 +31,7 @@ if(pgname()!='index'){
 	<?php   if(pgname()!=='candidate' && check_login()){?>
 	<div class="usr-img">
 		<img src="<?php echo user_image(); ?>" width="40" align="absmiddle" /><a href="#" class="user-mini"> <?php  echo $_SESSION['name'];  ?> <img src="<?php echo $sitepath;  ?>/assets/css/img/login_aero.png" width="9" height="5" /></a>
-		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a><br /><a href="<?php echo $purgepage; ?>">Purge Cache</a></div>
+		<div class="user-opt"><a href="<?php echo $logoutpage; ?>">Logout</a><br /><a class="button-purge" href="#">Purge Cache</a></div>
 	</div>
 	<?php  }?>
 </div>
@@ -129,7 +129,7 @@ Upgrade Now!
 </ul>
 
 
-<div class="sub-bar"><a href="<?php echo $membershippage;?>?c=<?php echo encrypt_text($_SESSION['privacylevel']) ?>">Learn More!</a></div>
+<div class="sub-bar"><a href="<?php echo $membershippage;?>?c=<?php echo urlencode(encrypt_text($_SESSION['privacylevel'])) ?>">Learn More!</a></div>
 
 </div>
 

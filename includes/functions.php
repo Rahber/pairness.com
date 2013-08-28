@@ -313,6 +313,8 @@ return "You are logged in as a bride or groom";
  } 
 }
 
+
+
 function encrypt_text($value)
 {
    if(!$value) return false;
@@ -353,7 +355,7 @@ function do_login($email,$password,$remember,$return){
 	if($email!='' || $password!='' ){
 	$queryy = $mysqli->query("select * from login where ((email='$email' || username='$email' )and password='$password' and emailverification='1')");
 
-		if( mysqli_num_rows($queryy)==1){
+		if( $mysqli->num_rows==1){
 			while ($row = $queryy->fetch_object()){
 				$ds = session_id();
 				$_SESSION['id'] = $row ->uid;
@@ -531,14 +533,16 @@ if($enablecache==1 && check_login() &&  pgname()!='search'){
 function purgecache(){
 	$c=0;
 
-	$files = glob('./cache/*'); // get all file names
+	$files = glob('../cache/*'); // get all file names
 		foreach($files as $file){ // iterate files
 			if(is_file($file))
 				unlink($file); 
 				$c++;// delete file
 		}
 
-	return $c .' files purged';
+			$arr = array('s' => 1,'v'=>$c .' file(s) was/were purged');
+				return json_encode($arr);
+	
 
 }
 
@@ -593,7 +597,7 @@ global $ret,$f,$view;
 	if(pgname()=='profile'){$view = request_var('view','0'); 
 	if($view=='0'){
 	}else{
-	$view = decrypt_text($view);
+	 $view = urldecode(decrypt_text($view));
 	}
 	}
 }
@@ -616,6 +620,13 @@ function addbreak(){
 
 function fixheight(){
 	return "5'11";
+}
+
+function test(){
+
+	for($i=0;$i++;$i<100){
+	echo encrypt_text($i). "<br />";
+	}
 }
 
 function start_app(){
@@ -642,11 +653,11 @@ function start_app(){
 	$matchpage = "search.php?action=match";
 	$uploadpath = $sitepath. "/upload_images/";
 	
-	error_reporting(0);
+	//error_reporting(0);
 	startSession();
 	update_session();
 	cron_session();
-	update_lastpage(fullpagename());
+	update_lastpage("$_SERVER[REQUEST_URI]");
 	getvars();
 	cache_top();
 	
@@ -655,4 +666,6 @@ function start_app(){
 }
 
 start_app();
+
+
 ?>

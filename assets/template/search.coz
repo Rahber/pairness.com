@@ -1,7 +1,34 @@
 <h1>Search</h1>
 
 <div class="search-body">
-<form action="" method="post" name="search" id="search">
+
+
+<?php
+
+	$action = request_var('action','');
+	$count = 0;
+	$column = request_var('search_query','familyfullname');
+	$value = request_var('search_text','');
+	 $gender= request_var('gender','');
+
+switch ($action) {
+    case "main":
+        $p = $mysqli->query("SELECT * FROM pairness_family WHERE $column LIKE '%$value%'");
+        break;
+    case "explore":
+       echo $d = '<div class="gsl"><select onchange="changegender(this.options[this.selectedIndex].value)">
+	<option>Select</option>   
+	<option value="male">Male</option>
+	<option value="female">Female</option>
+	</select></div>';
+	if($gender==''){
+		$gender = 'female';
+	}
+		$p = $mysqli->query("SELECT * FROM pairness_family WHERE familygender ='$gender'");
+        break;
+	default:
+       ?>
+	   <form action="?action=main" method="post" name="search" id="search">
 <table width="600" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>Search Here:</td>
@@ -78,19 +105,17 @@
 
 </table>
 </form>
+	   <?php
+}
 
-
-
-<?php
-
-	if(isset($_POST['submit']))
+ if($_POST || $_GET){
+	if(($p->num_rows)>0)
 	{
-		$column = request_var('search_query','familyfullname');
-		$value = request_var('search_text','');
-		$p = $mysqli->query("SELECT * FROM pairness_family WHERE $column LIKE '%$value%'");
-		$mysqli->query($p);
+	
+		
 	
 		while($row= $p->fetch_object()){	
+		$count++;
 ?>	
 
 
@@ -99,7 +124,7 @@
 <div class="search-bio left">
 <div class="search-name"><?php echo $row->familyfullname;	 ?></div>
 <div class="search-details"><?php echo getage($row->familydateofbirth).adddash().$row->familycast.adddash().$row->familymothertongue.adddash().fixheight($row->familyheight).addbreak().$row->familycity.adddash().$row->familycountry	 ?></div>
-<div class="search-go-profile"><a href="<?php echo $profilepage; ?>?view=<?php echo encrypt_text($row->id); ?>">view complete profile >></a></div>
+<div class="search-go-profile"><a href="<?php echo $profilepage; ?>?view=<?php echo urlencode(encrypt_text($row->id)); ?>">view complete profile >></a></div>
 </div>
 
 
@@ -108,6 +133,11 @@
 
 <?php
 		}
+		
+		?>
+		<div class="result-search-bar"><?php echo $count;?> partner(s) were found.</div>
+		<?php
+}
 }
 ?>
 
