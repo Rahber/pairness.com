@@ -16,7 +16,15 @@ else{
   
  }
  else{
- echo'LIST ALL lISTINGS';
+
+echo "Please Select your listing profiles to view them!";
+
+	$ffd = $_SESSION['id'];
+	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
+	while ($row = $queryy->fetch_object()){
+		 echo '<div class="listings-pf"><a href="profile.php?view='.encrypt_text($row ->id).'">'.$row ->familyfullname.'</a></div>';
+	}
+
  }
  
 }
