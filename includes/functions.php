@@ -635,7 +635,7 @@ function start_app(){
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
-	$enablecache = 1;
+	$enablecache = 0;
 	
 	$purgepage = "purge.php";
 	$indexpage = "index.php";
