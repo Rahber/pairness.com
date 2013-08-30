@@ -48,6 +48,14 @@ redirect($candidatepage);
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
+  <tr> <td>&nbsp;</td>
+                    <td align="center" class="maintxt11"><input type="checkbox" name="policy" value="1" />
+                      I agree to the <a class="blink" href="#">Privacy Policy</a> and <a class="blink" href="#">T&amp;C</a>.</td>
+                  </tr>
+				   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td><input type="image" src="./assets/css/img/btn_register.png" name="submit" class="register-submit" id="submit" value="Submit" /></td>

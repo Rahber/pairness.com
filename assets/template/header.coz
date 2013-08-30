@@ -97,7 +97,7 @@ Your Listings
 	$ffd = $_SESSION['id'];
 	$queryy = $mysqli->query("select * from pairness_family where (familyid ='$ffd')");
 	while ($row = $queryy->fetch_object()){
-		 echo '<div class="sub-bar"><a href="profile.php?view='.encrypt_text($row ->id).'">'.$row ->familyfullname.'</a></div>';
+		 echo '<div class="sub-bar"><a href="profile.php?view='.urlencode(encrypt_text($row ->id)).'">'.$row ->familyfullname.'</a></div>';
 	}
 ?>
 

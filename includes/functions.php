@@ -13,7 +13,7 @@
 global $mysqli;
 
 
-function startSession($timeout = 600){
+function startSession($timeout = 600){ /* Start session and session cronning */
 	global $mysqli;
 	session_name('czid');
 	session_set_cookie_params(0);
@@ -35,7 +35,7 @@ function startSession($timeout = 600){
 
 }
 
-function update_lastpage($page){
+function update_lastpage($page){ /* Update user last page */
 	global $mysqli;
 	if($page!='logout.php' &&check_login()){
 	$id = $_SESSION['id'];
@@ -50,13 +50,13 @@ function update_lastpage($page){
 
 }
 
-function takemehome(){
+function takemehome(){ /* Redirection to home. */
 
 redirect("home.php");
 
 }
 
-function update_session(){
+function update_session(){ /* Update session and update time so user is always with in 10 minutes of activity */
 	if(check_login()){
 	global $mysqli;
 		$sep = $_SESSION['true'];
@@ -71,13 +71,13 @@ function update_session(){
 	}else{  return false;  }
 }
 
-function randomalpha($length){ 
+function randomalpha($length){  /* Random string generator */
     $alphNums = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";        
     $newString = str_shuffle(str_repeat($alphNums, rand(1, $length))); 
     return substr($newString, rand(0,strlen($newString)-$length), $length); 
 } 
 
-function set_name($title){
+function set_name($title){ /* Set name {{sname}} with the given variable */
 
 	$pageContents = ob_get_contents (); // Get all the page's HTML into a string
 	ob_end_clean (); // Wipe the buffer
@@ -85,7 +85,7 @@ function set_name($title){
 	echo str_replace ('{{sname}}', $title, $pageContents);
 }
 
-function remove_session(){
+function remove_session(){/* Logout a user */
 	global $mysqli;
 	$ds = $_SESSION['true'];
 	$mysqli->query("DELETE FROM session WHERE sessionid='$ds'");
@@ -102,7 +102,7 @@ function remove_session(){
 
 }
 
-function get_name($uid){
+function get_name($uid){ /* Get current user name */
 	$result = $mysqli->query("SELECT * FROM login where uid='$uid'");
 	while($row = $result->fetch_object()){
 		return $p = $row->username;
@@ -110,7 +110,7 @@ function get_name($uid){
 
 }
 
-function update_config($name,$data){
+function update_config($name,$data){ /* Update Configurations */
 	global $mysqli;
 	if($mysqli->query("UPDATE config set value='$data' where name='$name'")){
 		return true;
@@ -120,7 +120,7 @@ function update_config($name,$data){
 	}
 }
 
-function get_config($vvalue){
+function get_config($vvalue){  /*  Get values from configuration. Configuration to do.*/
 	global $mysqli;
 	$result = $mysqli->query("SELECT * FROM config where name='$vvalue'");
 	while($row = $result->fetch_object()){
@@ -128,25 +128,21 @@ function get_config($vvalue){
 	}
 }
 
-function update_view($id){
-	global $mysqli;
-	$result = $mysqli->query("Update images set views=views+1 where id='$id'");
-}
 
-function redirect($add,$delay=0){
+function redirect($add,$delay=0){ /* Redirection Script */
 	//echo "<script>window.setTimeout(function(){ window.location = '".$add."'; }, ".$delay.")</script>";
 	header("Refresh:". $delay .";url=". $add ); 
 }
 
 
-function onpage($ppg){
+function onpage($ppg){ /* Returns true if you are on current page */
 	if($ppg==pgname())
 		return true;
 	else
 		return false;
 }
 
-function pgname(){
+function pgname(){ /* Current page full name without extension */
 	$currentFile = $_SERVER["PHP_SELF"];
 	$parts = Explode('/', $currentFile);
 	$parts = $parts[count($parts) - 1];
@@ -155,7 +151,7 @@ function pgname(){
 	return $pageName;
 }
 
-function fullpagename(){
+function fullpagename(){ /* Current page full name with exntension */
 	$currentFile = $_SERVER["PHP_SELF"];
 	$parts = Explode('/', $currentFile);
 	$parts = $parts[count($parts) - 1];
@@ -163,7 +159,7 @@ function fullpagename(){
 
 }
 
-function set_var(&$result, $var, $type, $multibyte = false)
+function set_var(&$result, $var, $type, $multibyte = false) /* Part of request_var function */
 {
 	settype($var, $type);
 	$result = $var;
@@ -194,7 +190,7 @@ function set_var(&$result, $var, $type, $multibyte = false)
 }
 
 
-function request_var($var_name, $default, $multibyte = false, $cookie = false) // Always use request var to avoid injection
+function request_var($var_name, $default, $multibyte = false, $cookie = false) /* GET OR POST  Alternative. Always use it to avoid injection or hacking attempts  */
 {
 	if (!$cookie && isset($_COOKIE[$var_name]))
 	{
@@ -272,7 +268,7 @@ function request_var($var_name, $default, $multibyte = false, $cookie = false) /
 
 
 
-function short($string, $limit, $break=".", $pad="..."){
+function short($string, $limit, $break=".", $pad="..."){ /* Cuts a given paragraph into small chunk with ... dots */
 	if(strlen($string) <= $limit) return $string;
 	if(false !== ($breakpoint = strpos($string, $break, $limit))) {
 		if($breakpoint < strlen($string) - 1) {
@@ -281,8 +277,8 @@ function short($string, $limit, $break=".", $pad="..."){
 	}
 	return $string;
 }
-
-function isfamily(){
+ 
+function isfamily(){  /* Check if the current user is a family member of bride groom himself/herself */
 	global $mysqli;
 	$u= $_SESSION['id'];
 	$queryy = $mysqli->query("select * from login where uid='$u'");
@@ -297,7 +293,7 @@ function isfamily(){
 	
 }
 
-function is_vf($email){
+function is_vf($email){ /* check if current email is verified or not */
 	global $mysqli;
 	$queryy = $mysqli->query("select * from login where (email='$email' || username='$email' )");
 	while ($row = $queryy->fetch_object()){
@@ -305,7 +301,7 @@ function is_vf($email){
 	}
 }
 
-function fstatus(){
+function fstatus(){ /* Wether the user is family or birde groom himself  */
   if(isfamily()){ 
 return "You are logged in as a family member";
  }else{
@@ -315,7 +311,7 @@ return "You are logged in as a bride or groom";
 
 
 
-function encrypt_text($value)
+function encrypt_text($value) /* 256bit Rijndael encryption */
 {
    if(!$value) return false;
  
@@ -323,8 +319,8 @@ function encrypt_text($value)
    return trim(base64_encode($crypttext));
 }
  
-function decrypt_text($value)
-{
+function decrypt_text($value) /* Decryption Functions */
+{ 
    if(!$value) return false;
  
    $crypttext = base64_decode($value);
@@ -332,7 +328,7 @@ function decrypt_text($value)
    return trim($decrypttext);
 }
 
-function user_image(){
+function user_image(){ /* Get currentuser logged in image */
 
 global $uploadpath;
 $e = $_SESSION['email'];
@@ -346,7 +342,7 @@ global $mysqli;
 
 }
 
-function do_login($email,$password,$remember,$return){
+function do_login($email,$password,$remember,$return){ /*  Do login*/
 	session_regenerate_id();
 	
 	
@@ -387,7 +383,7 @@ function do_login($email,$password,$remember,$return){
 		}
 }
 
-function insert_ses($a,$b){
+function insert_ses($a,$b){ /* Insert current session in db */
 	global $mysqli;
 	$time = time();
 	$ip = $_SERVER['REMOTE_ADDR'];
@@ -396,7 +392,7 @@ function insert_ses($a,$b){
 	$mysqli->query($q);
 }
 
-function check_login(){
+function check_login(){ /*  Returns true or false that is a user is logged in or not */
 	$ddd = session_id() ;global $mysqli;		
 	if(isset($_SESSION['id'])){	
 				
@@ -416,7 +412,7 @@ function check_login(){
 	}
 }
 
-function remove_http($url) {
+function remove_http($url) { /* Remove http or https from url */
    $disallowed = array('http://', 'https://');
    foreach($disallowed as $d) {
       if(strpos($url, $d) === 0) {
@@ -426,7 +422,7 @@ function remove_http($url) {
    return $url;
 }
 
-function getsubpage(){
+function getsubpage(){ /* Get Subpage  */
 
 $currentFile = $_SERVER["PHP_SELF"];
 	$parts = Explode('/', $currentFile);
@@ -438,7 +434,7 @@ $currentFile = $_SERVER["PHP_SELF"];
 
 }
 
-function auth_check(){
+function auth_check(){ /* Check if a user is logged in or not */
 	$pg = pgname();
 	if(!check_login() && $pg !='index'){
 		redirect($sitepath.'index.php?return='.$pg);
@@ -447,7 +443,7 @@ function auth_check(){
 	}
 }
 
-function verify_id($email,$cs){
+function verify_id($email,$cs){ /* Verification of email*/
 	global $mysqli;
 
 
@@ -463,7 +459,7 @@ function verify_id($email,$cs){
 				$subject = "Your Email has been succsessfully verified";
 				$body = "Yay this is the bodt of succesfuly verified email";
 				send_email($email,$subject,$body);
-				return "<div class='success'>Successfully Verified.Please wait while you are redirected.</div>";
+				return "<div class='success'>Successfully Verified. Click <a href='complete_profile.php?view=".urlencode(encrypt_text($email))."&key=".urlencode(encrypt_text($cs))."'>here</a> for next step</div>";
 		
 
 			}else{
@@ -475,14 +471,14 @@ function verify_id($email,$cs){
 		}
 }
 
-function add_log($uid,$action){
+function add_log($uid,$action){ /* Add log values*/
 	global $mysqli;
 	$time = time();
 	$q = "INSERT INTO log (uid,action,logtime) VALUES ('$uid','$action','$time');";
 	$mysqli->query($q);
 }
 
-function cron_session(){
+function cron_session(){ /* Check if the session that exist in database is older than 10 minutes*/
 	global $mysqli;
 	$t = time();
 	$queryy =  $mysqli->query("Select * from session");
@@ -494,7 +490,7 @@ function cron_session(){
 		}
 }
 
-function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
+function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){ /* Send email function*/
 	global $contactemail;
     $to = $email; 
     $from = $contactemail; 
@@ -518,7 +514,7 @@ function send_email($email,$subject,$body,$bccallow=0,$bccemail=''){
 
 }
 
-function cache_bottom(){
+function cache_bottom(){ /* Cache bottom initlaizer */
 global $enablecache;
 if($enablecache==1 && check_login() &&  pgname()!='search'){
 	global $cachefile;
@@ -530,7 +526,7 @@ if($enablecache==1 && check_login() &&  pgname()!='search'){
 	}
 }
 
-function purgecache(){
+function purgecache(){ /* Delete all cache files*/
 	$c=0;
 
 	$files = glob('../cache/*'); // get all file names
@@ -546,11 +542,11 @@ function purgecache(){
 
 }
 
-function getage($dob){
+function getage($dob){ /* Should return correct date of birth by calculating year and months from DOB */
 	return 21;
 }
 
-function getemail($id){
+function getemail($id){ /* Get user id on the base of email*/
 	global $mysqli;
 	$q = $mysqli->query("select * from login where uid = '$id'");
 	while($row= $q->fetch_object()){	
@@ -558,7 +554,7 @@ function getemail($id){
 	}
 }
 
-function cache_top(){
+function cache_top(){ /* Start of Cache Header */
 	global $enablecache;
 	if($enablecache==1 && check_login() && pgname()!='search'){
 		global $cachefile,$sitepath,$view;
@@ -590,23 +586,29 @@ function cache_top(){
 	}
 }
 
-function getvars(){
-global $ret,$f,$view;
+function getvars(){ /* Initilaize Variables to get default variables using get or post*/
+global $ret,$f,$view,$skey;
 	$ret = request_var('return','');  
 	if(pgname()=='candidate'){$f= request_var('f',0);  }
-	if(pgname()=='profile'){$view = request_var('view','0'); 
+	if(pgname()=='profile' || pgname()=='complete_profile'){$view = request_var('view','0'); 
 	if($view=='0'){
 	}else{
 	 $view = urldecode(decrypt_text($view));
 	}
 	}
+	if( pgname()=='complete_profile'){$skey = request_var('key',''); 
+	if($skey==''){
+	}else{
+	 $skey = urldecode(decrypt_text($skey));
+	}
+	}
 }
 
-function adddash(){
+function adddash(){ /* Add Dash */
 	return ' - ';
 }
 
-function getfeature($value){
+function getfeature($value){ /* Return the feature id name on the base of id*/
 	global $mysqli;
 	$result = $mysqli->query("SELECT * FROM pairness_features where id='$vvalue'");
 	while($row = $result->fetch_object()){
@@ -614,28 +616,22 @@ function getfeature($value){
 	}
 }
 
-function addbreak(){
+function addbreak(){ /* Adds a line break*/
 	return "<br />";
 }
 
-function fixheight(){
+function fixheight(){ /* To-do: Should add aphostophy to show proper height */
 	return "5'11";
 }
 
-function test(){
 
-	for($i=0;$i++;$i<100){
-	echo encrypt_text($i). "<br />";
-	}
-}
-
-function start_app(){
+function start_app(){ /* Initialize Different Variables */
 	global $mysqli,$enablecache,$purgepage,$membershippage,$indexpage,$candidatepage,$uploadpath,$matchpage,$sitepath,$contactemail,$explorepage,$inboxpage,$homepage,$accountpage,$searchpage,$logoutpage,$photospage,$settingspage,$profilepage;
 	$mysqli = new mysqli("localhost", "root", "root", "pairness");
 	$contactemail = "rahber@cozmuler.com";
 	$sitepath ="http://localhost/pairness.com/";
 	
-	$enablecache = 1;
+	$enablecache = 0;
 	
 	$purgepage = "purge.php";
 	$indexpage = "index.php";
