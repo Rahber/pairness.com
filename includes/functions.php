@@ -451,6 +451,7 @@ function verify_id($email,$cs){ /* Verification of email*/
 		if($query->num_rows==1){
 			$d =time();
 			$finfo = $query ->fetch_assoc();
+			$fm = $finfo['isfamily'];
 			if($finfo['emailverification']==0){
 				$quer = $mysqli->query("update login set verificationdate='$d',emailverification=1 where email='$email' and sc='$cs'");
 				
@@ -459,7 +460,7 @@ function verify_id($email,$cs){ /* Verification of email*/
 				$subject = "Your Email has been succsessfully verified";
 				$body = "Yay this is the bodt of succesfuly verified email";
 				send_email($email,$subject,$body);
-				return "<div class='success'>Successfully Verified. Click <a href='complete_profile.php?view=".urlencode(encrypt_text($email))."&key=".urlencode(encrypt_text($cs))."'>here</a> for next step</div>";
+				return "<div class='success'>Successfully Verified. Click <a href='complete_profile.php?finfo=".$fm."&view=".urlencode(encrypt_text($email))."&key=".urlencode(encrypt_text($cs))."'>here</a> for next step</div>";
 		
 
 			}else{
