@@ -30,6 +30,8 @@
 <script type="text/javascript" src="<?php echo $sitepath;  ?>/assets/js/complete.js"></script>
 <script type='text/javascript' src='<?php echo $sitepath;  ?>/assets/js/pairness.js'></script>
 </section>
+</script>
+
 </body>
 </html>
 <?php 
